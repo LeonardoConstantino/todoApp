@@ -2,7 +2,7 @@
 
 ### [preview do projeto](https://leonardoconstantino.github.io/todoApp/)
 
-[Detalhes da arquitetura de arquivos](https://github.com/LeonardoConstantino/todoApp/blob/main/estrutura.md)
+[Detalhes da arquitetura de arquivos](https://raw.githubusercontent.com/LeonardoConstantino/todoApp/refs/heads/master/estrutura.md)
 
 ## Descrição
 

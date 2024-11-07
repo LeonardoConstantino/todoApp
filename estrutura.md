@@ -12,49 +12,48 @@
 | main.js | O arquivo JavaScript principal que importa e inicializa os módulos necessários. |
 
 ```
-|– todo-app/
-|
-| |– src/
-| |
-| |– assets/
-| |   |– images/           # Imagens
-| |   |– styles/           # Estilos (CSS/SASS)
-| |   |– fonts/            # Fontes
-| |
-| |– components/
-| |   |– button.js         # Componente de botão
-| |   |– carousel.js       # Componente de carrossel
-| |   |– dropdown.js       # Componente de dropdown
-| |   ...                  # Outros componentes
-| |
-| |– layout/
-| |   |– navigation.js     # Navegação
-| |   |– grid.js           # Sistema de grid
-| |   |– header.js         # Cabeçalho
-| |   |– footer.js         # Rodapé
-| |   |– sidebar.js        # Barra lateral
-| |   |– form.js           # Formulários
-| |   ...                  # Outros componentes de layout
-| |
-| |– pages/
-| |   |– home.js           # Página inicial
-| |   |– contact.js        # Página de contato
-| |   ...                  # Outras páginas
-| |
-| |– services/
-| |   |– apiService.js     # Serviço de API
-| |   |– authService.js    # Serviço de autenticação
-| |   ...                  # Outros serviços
-| |
-| |– utils/
-| |   |– constants.js      # Constantes
-| |   |– helpers.js        # Funções auxiliares
-| |   |– validators.js     # Funções de validação
-| |   ...                  # Outros utilitários
-| |
-| |– main.js               # Arquivo HTML principal
-|
-|– index.html              # Arquivo JS principal
+📦todoApp
+ ┣ 📂src
+ ┃ ┣ 📂assets
+ ┃ ┃ ┣ 📂fonts
+ ┃ ┃ ┣ 📂images
+ ┃ ┃ ┃ ┣ 📜favicon.ico
+ ┃ ┃ ┃ ┣ 📜image.png
+ ┃ ┃ ┃ ┗ 📜representacao.png
+ ┃ ┃ ┗ 📂styles
+ ┃ ┣ 📂components
+ ┃ ┃ ┣ 📜button.js
+ ┃ ┃ ┣ 📜carousel.js
+ ┃ ┃ ┣ 📜inputRadio.js
+ ┃ ┃ ┣ 📜modal.js
+ ┃ ┃ ┗ 📜snackbar.js
+ ┃ ┣ 📂layout
+ ┃ ┃ ┣ 📜footer.js
+ ┃ ┃ ┣ 📜header.js
+ ┃ ┃ ┗ 📜tasks.js
+ ┃ ┣ 📂pages
+ ┃ ┃ ┗ 📜home.js
+ ┃ ┣ 📂services
+ ┃ ┃ ┣ 📜dialogHandler.js
+ ┃ ┃ ┣ 📜handlers.js
+ ┃ ┃ ┗ 📜storageHandle.js
+ ┃ ┣ 📂utils
+ ┃ ┃ ┣ 📜constants.js
+ ┃ ┃ ┣ 📜helpers.js
+ ┃ ┃ ┣ 📜renderElement.js
+ ┃ ┃ ┣ 📜showSnackbar.js
+ ┃ ┃ ┣ 📜storageUtil.js
+ ┃ ┃ ┗ 📜types.js
+ ┃ ┗ 📜main.js
+ ┣ 📜.gitignore
+ ┣ 📜estrutura.md
+ ┣ 📜index.html
+ ┣ 📜LICENSE.txt
+ ┣ 📜package-lock.json
+ ┣ 📜package.json
+ ┣ 📜README.md
+ ┣ 📜todoApp.html
+ ┗ 📜vite.config.js
 ```
 
 ## Estrutura da pasta styles
@@ -80,48 +79,30 @@ No main.css não deve conter nada além de imports de outros ficheiros — Isto 
 - Uma nova linha após o último @import de uma pasta;
 
 ```
-styles/
-|
-|– base/
-|   |– _reset.css       # Reset/normalização
-|   |– _typography.css  # Regras de tipografia
-|   ...                 # Etc...
-|
-|– components/
-|   |– _buttons.css     # Botões
-|   |– _carousel.css    # Carrossel
-|   |– _dropdown.css    # Dropdown
-|   ...                 # Etc...
-|
-|– layout/
-|   |– _navigation.css  # Navegação
-|   |– _grid.css        # Sistema de grid
-|   |– _header.css      # Cabeçalho
-|   |– _footer.css      # Rodapé
-|   |– _sidebar.css     # Barra lateral
-|   |– _forms.css       # Formulários
-|   ...                 # Etc...
-|
-|– pages/
-|   |– _home.css        # Estilos Página inicial
-|   |– _contact.css     # Estilos Página de contato
-|   ...                 # Etc...
-|
-|– themes/
-|   |– _theme.css       # Tema padrão
-|   |– _admin.css       # Tema de administração
-|   ...                 # Etc...
-|
-|– utils/
-|   |– _variables.css   # Variáveis css
-|   |– _functions.css   # Funções css
-|   |– _mixins.css      # Mixins css
-|   |– _helpers.css     # Auxiliares de classes
-|
-|– vendors/
-|   |– _bootstrap.css   # Bootstrap
-|   |– _jquery-ui.css   # jQuery UI
-|   ...                 # Etc...
-|
-|– main.css             # Arquivo principal do css
+📂styles
+┣ 📂base
+┃ ┣ 📜_reset.css
+┃ ┗ 📜_typography.css
+┣ 📂components
+┃ ┣ 📜_buttons.css
+┃ ┣ 📜_checkbox.css
+┃ ┣ 📜_dropdown.css
+┃ ┣ 📜_modal.css
+┃ ┣ 📜_snackbar.css
+┃ ┗ 📜_textarea.css
+┣ 📂layout
+┃ ┣ 📜layout_container.css
+┃ ┣ 📜layout_footer.css
+┃ ┣ 📜layout_header.css
+┃ ┗ 📜layout_task.css
+┣ 📂pages
+┃ ┗ 📜pages_home.css
+┣ 📂themes
+┃ ┣ 📜themes_dark.css
+┃ ┗ 📜themes_print.css
+┣ 📂utils
+┃ ┣ 📜utils_animation.css
+┃ ┣ 📜utils_helpers.css
+┃ ┗ 📜utils_variables.css
+┗ 📜main.css
 ```

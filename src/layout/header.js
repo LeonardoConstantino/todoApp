@@ -1,7 +1,7 @@
 import { createButton } from '../components/button';
 import { getInputRadio } from '../components/inputRadio';
 import { getText } from '../services/dialogHandler';
-import { showModal, toggleLanguage, toggleTheme } from '../services/handlers';
+import { showMessageSelectedLang, showModal, toggleLanguage, toggleTheme } from '../services/handlers';
 import { currentTheme } from '../services/storageHandle';
 import { getComponent, getLang, getTextComponent } from '../utils/helpers';
 
@@ -27,19 +27,28 @@ const modalContent = getComponent(
       'language',
       'pt-br',
       getText(getLang(), 'app.pt-br'),
-      true
+      true,
+      '',
+      '',
+      showMessageSelectedLang
     ),
     getInputRadio(
       'language',
       'en-us',
       getText(getLang(), 'app.en-us'),
-      false
+      false,
+      '',
+      '',
+      showMessageSelectedLang
     ),
     getInputRadio(
       'language',
       'es-es',
       getText(getLang(), 'app.es-es'),
-      false
+      false,
+      '',
+      '',
+      showMessageSelectedLang
     )
   )
 );
@@ -62,7 +71,7 @@ const langModalButton = createButton(
   ()=>{showModal(modalContent, toggleLanguage)},
   '',
   'lang-modal-button',
-  getText(getLang(), 'actions.toggleTheme')
+  getText(getLang(), 'actions.toggleLanguage')
 );
 
 const headerActions = getComponent('div', toggleThemeButton, langModalButton);

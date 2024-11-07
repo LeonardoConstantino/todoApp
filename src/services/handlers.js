@@ -150,6 +150,28 @@ export const deleteAllTasks = () => {
 };
 
 /**
+ * Exibe uma mensagem no modal quando um idioma é selecionado.
+ *
+ * @param {Event} e - O evento de clique do usuário.
+ * @returns {void}
+ */
+export const showMessageSelectedLang = (e) =>{
+  e.preventDefault();
+  if (!(e.target instanceof HTMLElement)) return;
+
+  const modal = e.target.closest('dialog');
+  if (!modal) return;
+
+  const selectedLanguage = modal.querySelector(
+    'input[name="language"]:checked'
+  );
+
+  if (selectedLanguage instanceof HTMLInputElement) {
+    showSnackbar(getText(getLang(), 'notifications.languageSelected', selectedLanguage.value));
+  }
+}
+
+/**
  * Exibe um modal na aplicação.
  *
  * @param {any} content - O conteúdo a ser exibido no modal.

@@ -6,6 +6,7 @@ button {
   background: var(--accent);
   color: white;
   transition: var(--animation-duration);
+  transition: background-color var(--animation-duration) ease, color var(--animation-duration) ease;
 }
 
 button:hover {

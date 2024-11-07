@@ -15,7 +15,7 @@ import { createButton } from './button.js'
 export const getModal = (content, confirmeHandler) => {
   const confirmeModalButton = createButton('OK', confirmeHandler, '', '', 'Confirmar')
 
-  const closeModalButton = createButton('Cancelar', (e)=>console.log, '', '', 'Fechar')
+  const closeModalButton = createButton('Cancelar', closeModal, '', '', 'Fechar')
   if(closeModalButton.props) closeModalButton.props.formmethod = 'dialog'
 
   const form = getComponent('form', confirmeModalButton, closeModalButton)

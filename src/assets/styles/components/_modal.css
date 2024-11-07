@@ -2,14 +2,10 @@
 dialog {
   width: 300px;
   max-width: 90%;
-  border: none;
-  border-radius: 8px;
-  padding: 20px;
+  border-radius: var(--border-radius);
+  padding: var(--spacing);
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  box-shadow: 0 4px 12px var(--shadow);
-  font-family: Arial, sans-serif;
-  font-size: 16px;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -17,8 +13,8 @@ dialog {
 }
 
 dialog::backdrop {
-  background: rgba(0, 0, 0, 0.7); /* Fundo escuro com opacidade */
-  backdrop-filter: blur(4px);     /* Leve desfoque para o backdrop */
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
 }
 
 /* Estilo para o botão de fechar (X) */
@@ -28,8 +24,9 @@ dialog::backdrop {
   color: var(--text-secondary);
   font-size: 16px;
   position: absolute;
-  top: 10px;
-  right: 10px;
+  padding: var(--spacing-p);
+  top: 0px;
+  right: 0px;
   cursor: pointer;
   transition: color 0.2s ease;
 }
@@ -43,12 +40,9 @@ dialog form button {
   background-color: var(--bg-secondary);
   color: var(--text-primary);
   border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 8px 16px;
-  margin: 8px 4px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  border-radius: var(--border-radius);
+  padding: var(--spacing-pp) var(--spacing);
+  margin: var(--spacing-p) var(--spacing-xp);
 }
 
 dialog form button:hover {
@@ -64,5 +58,5 @@ dialog form {
 
 dialog span {
   display: inline-block;
-  padding: 0 4px;
+  padding: 0 var(--spacing-xp);
 }

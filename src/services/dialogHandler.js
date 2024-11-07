@@ -10,6 +10,9 @@ const texts = {
       modalLang: {
         title: 'Escolha uma nova lingua.',
       },
+      modalDeleteTasks: {
+        title: 'Tem certeza de que deseja remover todas as tarefas?',
+      },
       'pt-br': 'Português 🇧🇷',
       'en-us': 'English 🇺🇸',
       'es-es': 'Español 🇪🇸',
@@ -32,8 +35,8 @@ const texts = {
       storageUsage: (usage) => `🗂️ ~${usage} / ~10 MB`,
       summary: (total, pending, completed) =>
         `Total: ${total} | Pendentes: ${pending} | Concluídas: ${completed} 📊`,
-      languageChanged: (newLanguage) =>
-        `Idioma alterado para ${newLanguage} 🌐`,
+      languageSelected: (newLanguage) =>
+        `🌐 ${newLanguage} Selecionado com sucesso! Clique em OK para aplicar!`,
     },
     placeholders: {
       taskInput: '📝 Digite suas tarefas (uma por linha)',
@@ -51,6 +54,7 @@ const texts = {
       deleteAllTasksConfirm: (count) =>
         `Excluir todas as tarefas (${count}) 🔄🗑️`,
       changeLanguage: '🌐 Mudar Idioma',
+      toggleLanguage: '🌐 Mudar Idioma! Português, English e Español',
     },
     filters: {
       status: {
@@ -80,6 +84,9 @@ const texts = {
       title: '📋 Task List',
       modalLang: {
         title: 'Choose a new language.',
+      },
+      modalDeleteTasks: {
+        title: 'Are you sure you want to remove all tasks?',
       },
       'pt-br': 'Portuguese 🇧🇷',
       'en-us': 'English 🇺🇸',
@@ -149,6 +156,9 @@ const texts = {
       title: '📋 Lista de Tareas',
       modalLang: {
         title: 'Elige un nuevo idioma.',
+      },
+      modalDeleteTasks: {
+        title: '¿Estás seguro de querer eliminar todas las tareas?',
       },
       'pt-br': 'Portugués 🇧🇷',
       'en-us': 'Inglés 🇺🇸',

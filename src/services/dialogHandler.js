@@ -83,6 +83,7 @@ const texts = {
     infos: {
       sizeInfo: 'Os tamanhos são aproximados e podem variar. 🗂️',
       lastCompletedTask: (lastCompletedTask) => lastCompletedTask.completed?`⏱️ Última tarefa concluída: ${lastCompletedTask.title} a ${getTimeDiff(+new Date(lastCompletedTask.completedAt), +new Date())}`: 'Nenhuma tarefa concluída',
+      selectInfo: (objectOptions) => `📋 Selecione entre as seguintes opções: ${Object.values(objectOptions).join(', ')}`,
     }
   },
   'en-us': {
@@ -117,6 +118,7 @@ const texts = {
       summary: (total, pending, completed) =>
         `Total: ${total} | Pending: ${pending} | Completed: ${completed} 📊`,
       languageChanged: (newLanguage) => `Language changed to ${newLanguage} 🌐`,
+      languageSelected: (newLanguage) => `Language selected successfully! Click OK to apply!`,
     },
     placeholders: {
       taskInput: '📝 Enter your tasks (one per line)',
@@ -159,6 +161,7 @@ const texts = {
     },infos: {
       sizeInfo: 'The sizes are approximate and may vary. 🗂️',
       lastCompletedTask: (lastCompletedTask) => lastCompletedTask.completed?`⏱️ Last completed task: ${lastCompletedTask.title} at ${getTimeDiff(+new Date(lastCompletedTask.completedAt), +new Date())}`: 'No tasks completed',
+      selectInfo: (objectOptions) => `📋 Select between the following options: ${Object.values(objectOptions)}`
     }
   },
   'es-es': {
@@ -193,6 +196,7 @@ const texts = {
       summary: (total, pending, completed) =>
         `Total: ${total} | Pendientes: ${pending} | Completadas: ${completed} 📊`,
       languageChanged: (newLanguage) => `Idioma cambiado a ${newLanguage} 🌐`,
+      languageSelected: (newLanguage) => `Idioma seleccionado con éxito! Click OK para aplicar!`,
     },
     placeholders: {
       taskInput: '📝 Escribe tus tareas (una por línea)',
@@ -237,6 +241,7 @@ const texts = {
     infos: {
       sizeInfo: 'Los tamaños son aproximados y pueden variar. 🗂️',
       lastCompletedTask: (lastCompletedTask) => lastCompletedTask.completed?`⏱️ Última tarea completada: ${lastCompletedTask.title} hace ${getTimeDiff(+new Date(lastCompletedTask.completedAt), +new Date())}`: 'No se ha completado ninguna tarea',
+      selectInfo: (objectOptions) => `📋 Selecciona entre las siguientes opciones: ${Object.values(objectOptions)}`
     }
   },
 };

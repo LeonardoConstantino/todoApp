@@ -62,6 +62,7 @@ const getSelection = (id, objectOptions) => {
 
   const select = getComponent('select', ...options);
   select.props.id = id;
+  select.props.title = getText(getLang(), 'infos.selectInfo', objectOptions);
   return select;
 };
 

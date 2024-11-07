@@ -1,0 +1,36 @@
+@media print {
+  body {
+    min-width: none;
+    padding: 5%;
+  }
+
+  form {
+    display: none;
+  }
+
+  details {
+    display: none;
+  }
+
+  details[open] {
+    display: flex;
+  }
+
+  select {
+    border: 1px solid #000;
+  }
+
+  .destaque,
+  tr.destaque {
+    background-color: #ccc;
+    color: #000;
+    border: 1px solid #000;
+    opacity: 1;
+  }
+
+  .container,
+  .principal {
+    width: fit-content;
+    height: fit-content;
+  }
+}

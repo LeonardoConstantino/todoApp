@@ -1,0 +1,18 @@
+textarea {
+  /* flex: 1 1 0; */
+  width: 100%;
+  padding: var(--spacing-p);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  min-height: var(--spacing-gg);
+  resize: vertical;
+  transition: var(--animation-duration);
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  min-height: 100px;
+}

@@ -1,0 +1,60 @@
+.task-card label:has(.task-checkbox) {
+  /* display: block; */
+  /* position: relative; */
+  /* padding-left: 35px; */
+  /* margin-bottom: 12px; */
+  cursor: pointer;
+  /* font-size: 22px; */
+}
+
+
+.task-checkbox{
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+label:has(.task-checkbox)::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+.task-card label:has(.task-checkbox):hover ~ label:has(.task-checkbox)::before{
+  content: '';
+  background-color: #ccc;
+}
+
+.task-checkbox:checked ~ label:has(.task-checkbox)::before{
+  content: '';
+  background-color: #2196F3;
+}
+
+.label:has(.task-checkbox)::after{
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+.task-checkbox:checked ~ label:has(.task-checkbox)::after{
+  content: '';
+  display: block;
+}
+
+label:has(.task-checkbox)::after{
+  top: 9px;
+  left: 9px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}

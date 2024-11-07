@@ -1,0 +1,24 @@
+button {
+  padding: var(--spacing-pp) var(--spacing-p);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  background: var(--accent);
+  color: white;
+  transition: var(--animation-duration);
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+button.theme-toggle {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+button.theme-toggle:hover {
+  background: var(--accent);
+  color: white;
+}

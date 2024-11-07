@@ -1,0 +1,17 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-g);
+  padding-bottom: var(--spacing-p);
+  border-bottom: 2px solid var(--border);
+}
+
+.infos {
+  font-size: 0.9em;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing);
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}

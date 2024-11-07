@@ -7,6 +7,68 @@ header {
   border-bottom: 2px solid var(--border);
 }
 
+header .header-actions {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  gap: var(--spacing-g);
+}
+
+/* Estilos para o modal content */
+.modal-content {
+  padding: var(--spacing-g);
+  color: var(--text-primary);
+  text-align: center;
+}
+
+/* Título do modal */
+.modal-content h3 {
+  font-size: 1.25em;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing);
+}
+
+/* Fieldset e legend para o grupo de idiomas */
+.modal-content fieldset {
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-pp);
+  text-align: left;
+}
+
+.modal-content legend {
+  font-weight: bold;
+  color: var(--text-secondary);
+  padding: 0 var(--spacing-xp);
+}
+
+/* Estilos para os labels de idioma */
+.modal-content label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-pp);
+  padding: var(--spacing-pp);
+  border-radius: var(--border-radius);
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.modal-content label:hover {
+  background-color: var(--bg-secondary);
+}
+
+.modal-content label span {
+  color: var(--text-primary);
+  font-size: 0.95em;
+}
+
+/* Estilos para os botões de opção (radio) */
+.modal-content input[type="radio"] {
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+
 .infos {
   font-size: 0.9em;
   color: var(--text-secondary);

@@ -1,9 +1,11 @@
 // src/utils/helpers.js
 /**
  * @import { Task } from './types.js'
+ * @import { ElementConfig } from './types.js'
  */
 
 import { getText } from '../services/dialogHandler';
+import { currentLanguage } from '../services/storageHandle.js';
 import { storageUtil } from './storageUtil';
 
 /**
@@ -98,8 +100,8 @@ export const updateStats = (tasks, isAppending = false) => {
     getLang(),
     'notifications.summary',
     total,
+    pending,
     completed,
-    pending
   );
 
   if (!isAppending) {
@@ -143,7 +145,7 @@ export const saveTasks = (tasks) => {
  * @returns {string} - A data formatada como uma string no formato 'pt-BR'.
  */
 export const formatDate = (date) => {
-  return new Date(date).toLocaleString('pt-BR');
+  return new Date(date).toLocaleString(getLang());
 };
 
 /**
@@ -164,13 +166,10 @@ export const getTimeDiff = (start, end) => {
 };
 
 /**
- * Obtém o idioma do navegador ou um idioma que o usuário deseja usar.
- * @param {boolean} [isUserLang=false] - Indica se o idioma do usuário deve ser usado.
- * @param {string} [UserLang='pt-br'] - O idioma do usuário.
- * @returns {string} - O idioma do navegador ou o idioma padrão 'pt-br'.
+ * Retorna o idioma do navegador ou o idioma atual da aplicação armazenado no armazenamento local.
+ * @returns {string} - O código de idioma em minúsculas.
  */
-export const getLang = (isUserLang = false, UserLang = 'pt-br') => {
-  if (isUserLang) return UserLang;
-  const lang = navigator.language || 'pt-br';
+export const getLang = () => {
+  const lang = currentLanguage || navigator.language || 'pt-br';
   return lang.toLowerCase();
 };

@@ -9,11 +9,14 @@
  */
 
 /**
- * @typedef {Object} ElementConfig - Configuração do elemento
- * @property {string} type - Tipo do elemento (ex: 'div', 'span', 'p', etc.)
- * @property {Object} [props] - Propriedades do elemento (ex: { id: 'myId', class: 'myClass' })
- * @property {string} [props.nodeValue] - Valor do nó de texto (ex: 'Texto do nó')
+ * @typedef {Object} ElementConfig - Configuração do elemento.
+ * @property {string} type - Tipo do elemento (ex: 'div', 'span', 'p', etc.).
+ * @property {Object} [props] - Propriedades do elemento.
+ * @property {string} [props.nodeValue] - Valor do nó de texto (ex: 'Texto do nó').
  * @property {Array<ElementConfig>} [props.children] - Filhos do elemento.
+ * @property {string} [props.id] - ID do elemento.
+ * @property {string} [props.class] - Classe CSS do elemento.
+ * @property {string} [props.formmethod] - Método do formulário (usado em elementos do tipo 'button' ou 'form').
  */
 
 /**

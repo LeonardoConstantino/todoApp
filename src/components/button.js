@@ -1,12 +1,7 @@
-import { getTextComponent, getComponent } from '../utils/helpers'
-
 /**
- * @typedef {Object} ElementConfig - Configuração do elemento
- * @property {string} type - Tipo do elemento (ex: 'div', 'span', 'p', etc.)
- * @property {Object} [props] - Propriedades do elemento (ex: { id: 'myId', class: 'myClass' })
- * @property {Array<ElementConfig>} [props.children] - Filhos do elemento.
+ * @import { ElementConfig } from '../utils/types.js'
  */
-
+import { getTextComponent, getComponent } from '../utils/helpers'
 /**
  * Cria uma representação de um botão com texto, ícone, evento de clique, classe CSS e título.
  *

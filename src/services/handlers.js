@@ -3,13 +3,14 @@
  * @import { Task } from '../utils/types.js'
  */
 
-import { storageUtil } from '../utils/storageUtil.js'
+import { storageUtil } from '../utils/storageUtil.js';
 import { getLang, saveTasks, updateOccupiedSize } from '../utils/helpers.js';
 import { renderTasks } from './../layout/tasks';
 import { showSnackbar } from '../utils/showSnackbar.js';
 import { tasks } from './storageHandle.js';
 import { getText } from './dialogHandler.js';
-
+import { renderElement } from '../utils/renderElement.js';
+import { getModal } from '../components/modal.js';
 
 /**
  * Alterna o tema da aplicação entre claro e escuro.
@@ -19,7 +20,7 @@ import { getText } from './dialogHandler.js';
  */
 export const toggleTheme = (e) => {
   if (!(e.target instanceof HTMLElement)) return;
-  
+
   const btn = e.target.closest('button');
   if (!btn) return;
 
@@ -84,7 +85,7 @@ export const addTasks = (e) => {
   }
 
   renderTasks(tasks);
-  updateOccupiedSize(tasks)
+  updateOccupiedSize(tasks);
   showSnackbar(getText(getLang(), 'notifications.tasksAdded'));
 };
 
@@ -113,21 +114,10 @@ export const toggleTask = (id, tasks) => {
     task.completedAt = task.completed ? new Date() : task.createdAt;
     saveTasks(tasks);
     renderTasks(tasks);
-    showSnackbar(
-      getText(
-        getLang(),
-        'notifications.taskStatusChanged',
-        task
-      )
-    );
-    return
+    showSnackbar(getText(getLang(), 'notifications.taskStatusChanged', task));
+    return;
   }
-  showSnackbar(
-    getText(
-      getLang(),
-      'notifications.taskNotFound'
-    )
-  );
+  showSnackbar(getText(getLang(), 'notifications.taskNotFound'));
 };
 
 /**
@@ -142,14 +132,8 @@ export const deleteTask = (id, tasks) => {
   const filteredTasks = tasks.filter((t) => t.id !== id);
   saveTasks(filteredTasks);
   renderTasks(filteredTasks);
-  updateOccupiedSize(filteredTasks)
-  showSnackbar(
-    getText(
-      getLang(),
-      'notifications.taskDeleted',
-      deletedTask
-    )
-  );
+  updateOccupiedSize(filteredTasks);
+  showSnackbar(getText(getLang(), 'notifications.taskDeleted', deletedTask));
 };
 
 /**
@@ -161,11 +145,61 @@ export const deleteAllTasks = () => {
   tasks.length = 0;
   saveTasks(tasks);
   renderTasks(tasks);
-  updateOccupiedSize(tasks)
-  showSnackbar(
-    getText(
-      getLang(),
-      'notifications.allTasksDeleted'
-    )
+  updateOccupiedSize(tasks);
+  showSnackbar(getText(getLang(), 'notifications.allTasksDeleted'));
+};
+
+/**
+ * Exibe um modal na aplicação.
+ *
+ * @param {any} content - O conteúdo a ser exibido no modal.
+ * @param {Function} confirmeHandler - A função a ser chamada quando o usuário confirmar o modal.
+ * @returns {void}
+ */
+export const showModal = (content, confirmeHandler) => {
+  const modal = renderElement(getModal(content, confirmeHandler), true);
+  if (modal instanceof HTMLDialogElement) {
+    modal.showModal();
+  }
+};
+
+/**
+ * Fecha um modal exibido na aplicação.
+ *
+ * @param {Event} e - O evento de clique do usuário que acionou o fechamento do modal.
+ * @returns {void}
+ */
+export const closeModal = (e) => {
+  e.preventDefault();
+  if (!(e.target instanceof HTMLElement)) return;
+
+  const modal = e.target.closest('dialog');
+  if (modal instanceof HTMLDialogElement) {
+    modal.close();
+    modal.remove();
+  }
+};
+
+/**
+ * Alterna o idioma da aplicação.
+ *
+ * @param {Event} e - O evento de clique do usuário.
+ * @returns {void}
+ */
+export const toggleLanguage = (e) => {
+  e.preventDefault();
+  if (!(e.target instanceof HTMLElement)) return;
+
+  const modal = e.target.closest('dialog');
+  if (!modal) return;
+
+  const selectedLanguage = modal.querySelector(
+    'input[name="language"]:checked'
   );
+  if (selectedLanguage instanceof HTMLInputElement) {
+    storageUtil.setItem('language', selectedLanguage.value);
+  }
+
+  closeModal(e);
+  window.location.reload();
 };

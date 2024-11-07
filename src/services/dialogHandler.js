@@ -1,14 +1,4 @@
 /**
- * @description Objeto contendo as prioridades disponíveis para as tarefas, com seus respectivos rótulos localizados em português.
- * As prioridades disponíveis são: baixa (🔵), média (🟠) e alta (🔴).
- */
-const priorities = {
-  low: 'Baixa 🔵',
-  medium: 'Média 🟠',
-  high: 'Alta 🔴',
-};
-
-/**
  * @description Objeto contendo os textos localizados para o aplicativo, organizados por idioma.
  * Cada idioma possui uma estrutura de objetos aninhados que representam os diferentes contextos e mensagens do aplicativo.
  * Esses textos são utilizados pela função `getText` para obter os textos localizados.
@@ -17,6 +7,12 @@ const texts = {
   'pt-br': {
     app: {
       title: '📋 Lista de Tarefas',
+      modalLang: {
+        title: 'Escolha uma nova lingua.',
+      },
+      'pt-br': 'Português 🇧🇷',
+      'en-us': 'English 🇺🇸',
+      'es-es': 'Español 🇪🇸',
     },
     notifications: {
       appStarted: '🚀 O aplicativo iniciado com sucesso!',
@@ -36,11 +32,17 @@ const texts = {
       storageUsage: (usage) => `🗂️ ~${usage} / ~10 MB`,
       summary: (total, pending, completed) =>
         `Total: ${total} | Pendentes: ${pending} | Concluídas: ${completed} 📊`,
+      languageChanged: (newLanguage) =>
+        `Idioma alterado para ${newLanguage} 🌐`,
     },
     placeholders: {
       taskInput: '📝 Digite suas tarefas (uma por linha)',
     },
-    priorities: { ...priorities },
+    priorities: {
+      low: 'Baixa 🔵',
+      medium: 'Média 🟠',
+      high: 'Alta 🔴',
+    },
     actions: {
       addTasks: '➕ Adicionar Tarefas',
       deleteTasks: '🗑️ Remover Tarefas',
@@ -48,6 +50,7 @@ const texts = {
       deleteTaskConfirm: (title) => `Excluir tarefa "${title}" 🗑️`,
       deleteAllTasksConfirm: (count) =>
         `Excluir todas as tarefas (${count}) 🔄🗑️`,
+      changeLanguage: '🌐 Mudar Idioma',
     },
     filters: {
       status: {
@@ -57,7 +60,9 @@ const texts = {
       },
       priority: {
         all: 'Todos 📋',
-        ...priorities,
+        low: 'Baixa 🔵',
+        medium: 'Média 🟠',
+        high: 'Alta 🔴',
       },
     },
     taskDetails: {
@@ -68,6 +73,145 @@ const texts = {
     labels: {
       taskList: '📋 Lista de Tarefas',
       delete: 'Excluir 🗑️',
+    },
+  },
+  'en-us': {
+    app: {
+      title: '📋 Task List',
+      modalLang: {
+        title: 'Choose a new language.',
+      },
+      'pt-br': 'Portuguese 🇧🇷',
+      'en-us': 'English 🇺🇸',
+      'es-es': 'Spanish 🇪🇸',
+    },
+    notifications: {
+      appStarted: '🚀 Application started successfully!',
+      startError: (message) =>
+        `❌ An error occurred while starting the application. ${message}`,
+      themeToggled: (currentTheme) => `🌓 Toggle Theme to ${currentTheme}`,
+      themeChanged: (newTheme) => `Theme changed to ${newTheme} 🌓`,
+      priorityUpdated: (priority) => `🔄 Priority updated to ${priority}`,
+      tasksAdded: '✅ Task(s) added successfully!',
+      filtersApplied: '🎯 Filters applied successfully!',
+      taskStatusChanged: (task) =>
+        `Task "${task.title}" ${task.completed ? 'completed' : 'pending'}!`,
+      taskNotFound: '⚠️ Task not found!',
+      taskDeleted: (deletedTask) =>
+        `🗑️ Task "${deletedTask.title}" deleted successfully!`,
+      allTasksDeleted: '🗑️ All tasks deleted successfully!',
+      storageUsage: (usage) => `🗂️ ~${usage} / ~10 MB`,
+      summary: (total, pending, completed) =>
+        `Total: ${total} | Pending: ${pending} | Completed: ${completed} 📊`,
+      languageChanged: (newLanguage) => `Language changed to ${newLanguage} 🌐`,
+    },
+    placeholders: {
+      taskInput: '📝 Enter your tasks (one per line)',
+    },
+    priorities: {
+      low: 'Low 🔵',
+      medium: 'Medium 🟠',
+      high: 'High 🔴',
+    },
+    actions: {
+      addTasks: '➕ Add Tasks',
+      deleteTasks: '🗑️ Remove Tasks',
+      toggleTheme: '🌓 Toggle Theme',
+      deleteTaskConfirm: (title) => `Delete task "${title}" 🗑️`,
+      deleteAllTasksConfirm: (count) => `Delete all tasks (${count}) 🔄🗑️`,
+      changeLanguage: '🌐 Change Language',
+    },
+    filters: {
+      status: {
+        all: 'All 📋',
+        completed: 'Completed ✅',
+        pending: 'Pending ⏳',
+      },
+      priority: {
+        all: 'All 📋',
+        low: 'Low 🔵',
+        medium: 'Medium 🟠',
+        high: 'High 🔴',
+      },
+    },
+    taskDetails: {
+      created: (createdAt) => `⏱️ Created: ${createdAt}`,
+      completed: (completedAt) => `⏱️ Completed: ${completedAt}`,
+      timeSpent: (time) => `⏱️ Time: ${time}`,
+    },
+    labels: {
+      taskList: '📋 Task List',
+      delete: 'Delete 🗑️',
+    },
+  },
+  'es-es': {
+    app: {
+      title: '📋 Lista de Tareas',
+      modalLang: {
+        title: 'Elige un nuevo idioma.',
+      },
+      'pt-br': 'Portugués 🇧🇷',
+      'en-us': 'Inglés 🇺🇸',
+      'es-es': 'Español 🇪🇸',
+    },
+    notifications: {
+      appStarted: '🚀 ¡Aplicación iniciada con éxito!',
+      startError: (message) =>
+        `❌ Ocurrió un error al iniciar la aplicación. ${message}`,
+      themeToggled: (currentTheme) => `🌓 Cambiar Tema a ${currentTheme}`,
+      themeChanged: (newTheme) => `Tema cambiado a ${newTheme} 🌓`,
+      priorityUpdated: (priority) => `🔄 Prioridad cambiada a ${priority}`,
+      tasksAdded: '✅ ¡Tarea(s) añadida(s) con éxito!',
+      filtersApplied: '🎯 ¡Filtros aplicados con éxito!',
+      taskStatusChanged: (task) =>
+        `Tarea "${task.title}" ${task.completed ? 'completada' : 'pendiente'}!`,
+      taskNotFound: '⚠️ ¡Tarea no encontrada!',
+      taskDeleted: (deletedTask) =>
+        `🗑️ Tarea "${deletedTask.title}" eliminada con éxito!`,
+      allTasksDeleted: '🗑️ ¡Todas las tareas eliminadas con éxito!',
+      storageUsage: (usage) => `🗂️ ~${usage} / ~10 MB`,
+      summary: (total, pending, completed) =>
+        `Total: ${total} | Pendientes: ${pending} | Completadas: ${completed} 📊`,
+      languageChanged: (newLanguage) => `Idioma cambiado a ${newLanguage} 🌐`,
+    },
+    placeholders: {
+      taskInput: '📝 Escribe tus tareas (una por línea)',
+    },
+    priorities: {
+      low: 'Baja 🔵',
+      medium: 'Media 🟠',
+      high: 'Alta 🔴',
+    },
+    actions: {
+      addTasks: '➕ Añadir Tareas',
+      deleteTasks: '🗑️ Eliminar Tareas',
+      toggleTheme: '🌓 Cambiar Tema',
+      deleteTaskConfirm: (title) => `Eliminar tarea "${title}" 🗑️`,
+      deleteAllTasksConfirm: (count) =>
+        `Eliminar todas las tareas (${count}) 🔄🗑️`,
+      changeLanguage: '🌐 Cambiar Idioma',
+    },
+    filters: {
+      status: {
+        all: 'Todas 📋',
+        completed: 'Completadas ✅',
+        pending: 'Pendientes ⏳',
+      },
+      priority: {
+        all: 'Todas 📋',
+        low: 'Baja 🔵',
+        medium: 'Media 🟠',
+        high: 'Alta 🔴',
+      },
+    },
+    taskDetails: {
+      created: (createdAt) => `⏱️ Creada: ${createdAt}`,
+      completed: (completedAt) => `⏱️ Completada: ${completedAt}`,
+      timeSpent: (time) => `⏱️ Tiempo: ${time}`,
+    },
+    labels: {
+      taskList: '📋 Lista de Tareas',
+      delete: 'Eliminar 🗑️',
     },
   },
 };

@@ -23,3 +23,10 @@ export const tasks = storageUtil.getItem('tasks') || [];
  * @type {string} - O tema atual da aplicação armazenado no armazenamento local.
  */
 export const currentTheme = storageUtil.getItem('theme') || 'light';
+
+/**
+ * Recupera o idioma atual da aplicação armazenado no armazenamento local.
+ * Caso não exista nenhum idioma armazenado, o idioma padrão 'pt-BR' é retornado.
+ * @type {string} - O idioma atual da aplicação armazenado no armazenamento local.
+ */
+export const currentLanguage = storageUtil.getItem('language');

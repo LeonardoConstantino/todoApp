@@ -30,7 +30,6 @@ const main = () => {
       
     // Renderiza a página inicial e o layout de tarefas dentro do elemento 'app'
     renderElement(home, true, app);
-    console.log('home :', home);
     renderTasks(tasks);
 
     // Exibe uma mensagem de sucesso indicando que a aplicação foi iniciada

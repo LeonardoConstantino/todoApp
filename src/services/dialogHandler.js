@@ -118,7 +118,7 @@ const texts = {
       summary: (total, pending, completed) =>
         `Total: ${total} | Pending: ${pending} | Completed: ${completed} 📊`,
       languageChanged: (newLanguage) => `Language changed to ${newLanguage} 🌐`,
-      languageSelected: (newLanguage) => `Language selected successfully! Click OK to apply!`,
+      languageSelected: (newLanguage) => `🌐 ${newLanguage} Language selected successfully! Click OK to apply!`,
     },
     placeholders: {
       taskInput: '📝 Enter your tasks (one per line)',
@@ -196,7 +196,7 @@ const texts = {
       summary: (total, pending, completed) =>
         `Total: ${total} | Pendientes: ${pending} | Completadas: ${completed} 📊`,
       languageChanged: (newLanguage) => `Idioma cambiado a ${newLanguage} 🌐`,
-      languageSelected: (newLanguage) => `Idioma seleccionado con éxito! Click OK para aplicar!`,
+      languageSelected: (newLanguage) => `🌐 ${newLanguage} Idioma seleccionado con éxito! Click OK para aplicar!`,
     },
     placeholders: {
       taskInput: '📝 Escribe tus tareas (una por línea)',

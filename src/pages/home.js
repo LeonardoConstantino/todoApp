@@ -1,17 +1,42 @@
 // src/pages/home.js
-import { calculateLocalStorageSize, getComponent, getLang, getTextComponent, getTextSpan, updateStats } from '../utils/helpers';
+import {
+  calculateLocalStorageSize,
+  getComponent,
+  getLang,
+  getLastCompletedTask,
+  getTextComponent,
+  getTextSpan,
+  updateStats,
+} from '../utils/helpers';
 import { createButton } from '../components/button';
-import { addTasks, applyFilters, togglePriority } from '../services/handlers.js';
+import {
+  addTasks,
+  applyFilters,
+  togglePriority,
+} from '../services/handlers.js';
 import { header } from '../layout/header.js';
 import { footer } from '../layout/footer.js';
 import { tasks } from '../services/storageHandle.js';
 import { getText } from '../services/dialogHandler.js';
 
-const stats = getTextSpan(updateStats(tasks)|| '');
-stats.props.id = 'stats';
-// stats.props.class = 'stats';
+const lastCompletedTask = getLastCompletedTask(tasks);
 
-const occupiedSize = getTextSpan(getText(getLang(), 'notifications.storageUsage', calculateLocalStorageSize(tasks)));
+const stats = getTextSpan(updateStats(tasks) || '');
+stats.props.title = getText(
+  getLang(),
+  'infos.lastCompletedTask',
+  lastCompletedTask
+);
+stats.props.id = 'stats';
+
+const occupiedSize = getTextSpan(
+  getText(
+    getLang(),
+    'notifications.storageUsage',
+    calculateLocalStorageSize(tasks)
+  )
+);
+occupiedSize.props.title = getText(getLang(), 'infos.sizeInfo');
 occupiedSize.props.id = 'sizeInfo';
 
 const infos = getComponent('div', stats, occupiedSize);
@@ -40,7 +65,10 @@ const getSelection = (id, objectOptions) => {
   return select;
 };
 
-const priorityOptions = getSelection('prioritySelect', getText(getLang(), 'priorities'));
+const priorityOptions = getSelection(
+  'prioritySelect',
+  getText(getLang(), 'priorities')
+);
 priorityOptions.props.onChange = togglePriority;
 
 const btnAddTasks = createButton(
@@ -60,24 +88,34 @@ inputGroup.props.class = 'input-group';
 const inputSection = getComponent('div', inputGroup);
 inputSection.props.class = 'input-section';
 
-const statusFilter = getSelection('statusFilter', getText(getLang(), 'filters.status'));
-statusFilter.props.id = 'statusFilter';
-statusFilter.props.onChange = applyFilters
-
-const priorityFilter = getSelection('priorityFilter', getText(getLang(), 'filters.priority'));
-priorityFilter.props.id = 'priorityFilter';
-priorityFilter.props.onChange = applyFilters
-
-const filters = getComponent(
-  'div',
-  statusFilter,
-  priorityFilter
+const statusFilter = getSelection(
+  'statusFilter',
+  getText(getLang(), 'filters.status')
 );
+statusFilter.props.id = 'statusFilter';
+statusFilter.props.onChange = applyFilters;
+
+const priorityFilter = getSelection(
+  'priorityFilter',
+  getText(getLang(), 'filters.priority')
+);
+priorityFilter.props.id = 'priorityFilter';
+priorityFilter.props.onChange = applyFilters;
+
+const filters = getComponent('div', statusFilter, priorityFilter);
 filters.props.class = 'filters';
 
-const taskList = getComponent('div')
+const taskList = getComponent('div');
 taskList.props.id = 'taskList';
 taskList.props.class = 'task-list';
 
-export const home = getComponent('div', header, infos, inputSection, filters, taskList, footer);
+export const home = getComponent(
+  'div',
+  header,
+  infos,
+  inputSection,
+  filters,
+  taskList,
+  footer
+);
 home.props.class = 'container';

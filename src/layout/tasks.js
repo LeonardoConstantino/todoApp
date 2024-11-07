@@ -162,6 +162,7 @@ export const renderTasks = (tasks) => {
   if (taskListContainer) {
     EventDelegator.cleanup(taskListContainer);
     taskListContainer.innerHTML = '';
+    // console.log(EventDelegator.eventHandlers)
 
     taskList.forEach((task) => {
       renderElement(task, true, taskListContainer);

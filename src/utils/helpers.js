@@ -95,21 +95,30 @@ export const updateStats = (tasks, isAppending = false) => {
   const completed = tasks.filter((t) => t.completed).length;
   const pending = total - completed;
 
-  const divStats = document.querySelector('div #stats');
+  /** @type {HTMLElement | null} */
+  const divStats = document.querySelector('#stats');
+
+  const lastCompletedTask = getLastCompletedTask(tasks);
+  
   const content = getText(
     getLang(),
     'notifications.summary',
     total,
     pending,
-    completed,
+    completed
   );
-
-  if (!isAppending) {
-    return content;
-  }
 
   if (divStats) {
     divStats.innerHTML = content;
+    divStats.title = getText(
+      getLang(),
+      'infos.lastCompletedTask',
+      lastCompletedTask
+    );
+  }
+
+  if (!isAppending) {
+    return content;
   }
 };
 
@@ -172,4 +181,16 @@ export const getTimeDiff = (start, end) => {
 export const getLang = () => {
   const lang = currentLanguage || navigator.language || 'pt-br';
   return lang.toLowerCase();
+};
+
+/**
+ * Retorna a última tarefa concluída da lista de tarefas.
+ * @param {Array<Task>} tasks - Um array de tarefas.
+ * @returns {Task|undefined} - A última tarefa concluída, ou undefined se não houver nenhuma tarefa concluída.
+ */
+export const getLastCompletedTask = (tasks) => {
+  const lastCompletedTask = tasks
+    .filter((task) => task.completed)
+    .sort((a, b) => +new Date(b.completedAt) - +new Date(a.completedAt))[0];
+  return lastCompletedTask;
 };

@@ -1,3 +1,5 @@
+import { getTimeDiff } from "../utils/helpers";
+
 /**
  * @description Objeto contendo os textos localizados para o aplicativo, organizados por idioma.
  * Cada idioma possui uma estrutura de objetos aninhados que representam os diferentes contextos e mensagens do aplicativo.
@@ -78,6 +80,10 @@ const texts = {
       taskList: '📋 Lista de Tarefas',
       delete: 'Excluir 🗑️',
     },
+    infos: {
+      sizeInfo: 'Os tamanhos são aproximados e podem variar. 🗂️',
+      lastCompletedTask: (lastCompletedTask) => lastCompletedTask.completed?`⏱️ Última tarefa concluída: ${lastCompletedTask.title} a ${getTimeDiff(+new Date(lastCompletedTask.completedAt), +new Date())}`: 'Nenhuma tarefa concluída',
+    }
   },
   'en-us': {
     app: {
@@ -127,6 +133,7 @@ const texts = {
       deleteTaskConfirm: (title) => `Delete task "${title}" 🗑️`,
       deleteAllTasksConfirm: (count) => `Delete all tasks (${count}) 🔄🗑️`,
       changeLanguage: '🌐 Change Language',
+      toggleLanguage: '🌐 Choose between Portuguese, English and Spanish',
     },
     filters: {
       status: {
@@ -149,7 +156,10 @@ const texts = {
     labels: {
       taskList: '📋 Task List',
       delete: 'Delete 🗑️',
-    },
+    },infos: {
+      sizeInfo: 'The sizes are approximate and may vary. 🗂️',
+      lastCompletedTask: (lastCompletedTask) => lastCompletedTask.completed?`⏱️ Last completed task: ${lastCompletedTask.title} at ${getTimeDiff(+new Date(lastCompletedTask.completedAt), +new Date())}`: 'No tasks completed',
+    }
   },
   'es-es': {
     app: {
@@ -200,6 +210,7 @@ const texts = {
       deleteAllTasksConfirm: (count) =>
         `Eliminar todas las tareas (${count}) 🔄🗑️`,
       changeLanguage: '🌐 Cambiar Idioma',
+      toggleLanguage: '🌐 Elije entre Portugués, Inglés y Español',
     },
     filters: {
       status: {
@@ -223,6 +234,10 @@ const texts = {
       taskList: '📋 Lista de Tareas',
       delete: 'Eliminar 🗑️',
     },
+    infos: {
+      sizeInfo: 'Los tamaños son aproximados y pueden variar. 🗂️',
+      lastCompletedTask: (lastCompletedTask) => lastCompletedTask.completed?`⏱️ Última tarea completada: ${lastCompletedTask.title} hace ${getTimeDiff(+new Date(lastCompletedTask.completedAt), +new Date())}`: 'No se ha completado ninguna tarea',
+    }
   },
 };
 

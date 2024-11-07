@@ -87,7 +87,7 @@ Autor: Leonardo H. Constantino
 </div>
 
 <div align='center'>
-    <img src='https://raw.githubusercontent.com/LeonardoConstantino/todoApp/master/src/assets/images/representacao.jpg' alt='Sample screenshot' width='400'>
+    <img src='https://github.com/LeonardoConstantino/todoApp/blob/master/src/assets/images/representacao.png?raw=true' alt='Sample screenshot' width='400'>
 </div>
 
 #### Se precisar de alguma informação sobre o projeto estou a disposição, avise-me!

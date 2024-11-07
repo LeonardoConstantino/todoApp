@@ -14,9 +14,6 @@ build/
 *.bundle.js
 *.bundle.js.map
 
-# Arquivos Sass compilados
-/src/assets/styles/*.css
-
 # Outros arquivos
 .cache/
 .vscode/

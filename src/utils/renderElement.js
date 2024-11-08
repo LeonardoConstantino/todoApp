@@ -174,7 +174,7 @@ export const renderElement = (
 ) => {
   try {
     // Inicializa o delegador de eventos se ainda não foi feito
-    EventDelegator.init(container);
+    EventDelegator.init(document.body);
 
     // Validação do tipo de elemento
     if (type !== null && type !== undefined && typeof type !== 'string') {

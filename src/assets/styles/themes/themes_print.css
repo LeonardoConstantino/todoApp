@@ -1,36 +1,35 @@
 @media print {
+  :root {
+    --spacing: 0.55rem;
+  }
+
   body {
     min-width: none;
     padding: 5%;
   }
 
-  form {
+  textarea {
     display: none;
-  }
-
-  details {
-    display: none;
-  }
-
-  details[open] {
-    display: flex;
   }
 
   select {
-    border: 1px solid #000;
+    display: none;
   }
 
-  .destaque,
-  tr.destaque {
-    background-color: #ccc;
-    color: #000;
-    border: 1px solid #000;
-    opacity: 1;
+  .task-checkbox {
+    display: none;
   }
 
-  .container,
-  .principal {
-    width: fit-content;
-    height: fit-content;
+  button {
+    display: none;
+  }
+
+  button.task-priority {
+    display: inline-block;
+  }
+
+  .task-card {
+    border: 1px rgb(148, 148, 148) solid;
+    box-shadow: none;
   }
 }

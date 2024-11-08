@@ -10,7 +10,7 @@
   align-items: flex-start;
 }
 
-.input-group-actions{
+.input-group-actions {
   display: flex;
   gap: var(--spacing-p);
 }

@@ -1,4 +1,3 @@
-/* Estilos gerais para o diálogo em modo dark */
 dialog {
   width: 300px;
   max-width: 90%;
@@ -17,7 +16,6 @@ dialog::backdrop {
   backdrop-filter: blur(8px);
 }
 
-/* Estilo para o botão de fechar (X) */
 .close {
   background: none;
   border: none;
@@ -35,7 +33,6 @@ dialog::backdrop {
   color: var(--text-primary);
 }
 
-/* Estilos para os botões OK e Fechar */
 dialog form button {
   background-color: var(--bg-secondary);
   color: var(--text-primary);
@@ -50,7 +47,6 @@ dialog form button:hover {
   color: var(--bg-primary);
 }
 
-/* Estilos adicionais para o alinhamento do conteúdo */
 dialog form {
   display: flex;
   justify-content: flex-end;

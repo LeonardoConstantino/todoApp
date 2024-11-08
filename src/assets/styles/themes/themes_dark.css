@@ -1,14 +1,14 @@
 [data-theme='dark'] {
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #2d2d2d;
-  --text-primary: #ffffff;
-  --text-secondary: #b3b3b3;
-  --text-tertiary: #808080;
-  --accent: #64b5f6;
-  --border: #404040;
-  --success: #81c784;
-  --warning: #ffb74d;
-  --danger: #e57373;
-  --card-bg: #2d2d2d;
-  --shadow: rgba(0, 0, 0, 0.3);
+  --bg-primary: #121218;
+  --bg-secondary: #1E1E26;
+  --text-primary: #F8F9FA;
+  --text-secondary: #CED3D7;
+  --text-tertiary: #9BA1A6;
+  --accent: #7B9EDB;
+  --border: #2A2A34;
+  --success: #6BAB7F;
+  --warning: #E6A74C;
+  --danger: #D66D75;
+  --card-bg: #1E1E26;
+  --shadow: rgba(0, 0, 0, 0.35);
 }

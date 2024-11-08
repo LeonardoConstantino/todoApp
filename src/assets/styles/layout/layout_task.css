@@ -45,13 +45,10 @@
 
 .task-priority {
   align-self: flex-start;
-  padding: var(--spacing-xp) var(--spacing-pp);
-  border-radius: var(--border-radius);
-  font-size: 0.8em;
 }
 
 .task-dates {
-  font-size: 0.85em;
+  font-size: 0.8em;
   color: var(--text-tertiary);
   line-height: 1.4;
   display: flex;

@@ -6,11 +6,12 @@ button {
   background: var(--accent);
   color: var(--text-primary);
   transition: var(--animation-duration);
-  transition: background-color var(--animation-duration) ease, color var(--animation-duration) ease;
+  transition: background-color var(--animation-duration) ease, color var(--animation-duration) ease, transform var(--animation-duration) ease;
 }
 
 button:hover {
   opacity: 0.9;
+  transform: scale(1.02);
 }
 
 button.theme-toggle {

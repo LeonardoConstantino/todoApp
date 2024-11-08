@@ -4,7 +4,7 @@ button {
   border-radius: var(--border-radius);
   cursor: pointer;
   background: var(--accent);
-  color: white;
+  color: var(--text-primary);
   transition: var(--animation-duration);
   transition: background-color var(--animation-duration) ease, color var(--animation-duration) ease;
 }
@@ -21,5 +21,5 @@ button.theme-toggle {
 
 button.theme-toggle:hover {
   background: var(--accent);
-  color: white;
+  color: var(--text-primary);
 }

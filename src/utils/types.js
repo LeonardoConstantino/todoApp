@@ -25,4 +25,4 @@
  * @property {Task} TASKS - Tipos de jogos disponíveis.
  * @property {ElementConfig} ELEMENTCONFIG - Tipos de cores.
  */
-module.exports = Types
+module.exports = Types;

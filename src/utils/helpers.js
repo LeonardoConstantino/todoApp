@@ -1,7 +1,6 @@
 // src/utils/helpers.js
 /**
  * @import { Task } from './types.js'
- * @import { ElementConfig } from './types.js'
  */
 
 import { getText } from '../services/dialogHandler';

@@ -1,7 +1,12 @@
 import { createButton } from '../components/button';
 import { getInputRadio } from '../components/inputRadio';
 import { getText } from '../services/dialogHandler';
-import { showMessageSelectedLang, showModal, toggleLanguage, toggleTheme } from '../services/handlers';
+import {
+  showMessageSelectedLang,
+  showModal,
+  toggleLanguage,
+  toggleTheme,
+} from '../services/handlers';
 import { currentTheme } from '../services/storageHandle';
 import { getComponent, getLang, getTextComponent } from '../utils/helpers';
 
@@ -68,7 +73,9 @@ const toggleThemeButton = createButton(
 
 const langModalButton = createButton(
   getText(getLang(), 'actions.changeLanguage'),
-  ()=>{showModal(modalContent, toggleLanguage)},
+  () => {
+    showModal(modalContent, toggleLanguage);
+  },
   '',
   'lang-modal-button',
   getText(getLang(), 'actions.toggleLanguage')

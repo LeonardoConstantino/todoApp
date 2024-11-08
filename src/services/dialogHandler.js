@@ -1,4 +1,4 @@
-import { getTimeDiff } from "../utils/helpers";
+import { getTimeDiff } from '../utils/helpers';
 
 /**
  * @description Objeto contendo os textos localizados para o aplicativo, organizados por idioma.
@@ -58,8 +58,10 @@ const texts = {
         `Excluir todas as tarefas (${count}) 🔄🗑️`,
       changeLanguage: '🌐 Mudar Idioma',
       toggleLanguage: '🌐 Mudar Idioma! Português, English e Español',
-      toggleTask: (completed, title) => completed ? `🛑 Marcar ${title} como pendente.` : `✅ Marcar ${title} como concluída.`
-      ,
+      toggleTask: (completed, title) =>
+        completed
+          ? `🛑 Marcar ${title} como pendente.`
+          : `✅ Marcar ${title} como concluída.`,
     },
     filters: {
       status: {
@@ -85,9 +87,20 @@ const texts = {
     },
     infos: {
       sizeInfo: 'Os tamanhos são aproximados e podem variar. 🗂️',
-      lastCompletedTask: (lastCompletedTask) => lastCompletedTask?.completed?`⏱️ Última tarefa concluída: ${lastCompletedTask.title} a ${getTimeDiff(+new Date(lastCompletedTask.completedAt), +new Date())}`: 'Nenhuma tarefa concluída',
-      selectInfo: (objectOptions) => `📋 Selecione entre as seguintes opções: ${Object.values(objectOptions).join(', ')}`,
-    }
+      lastCompletedTask: (lastCompletedTask) =>
+        lastCompletedTask?.completed
+          ? `⏱️ Última tarefa concluída: ${
+              lastCompletedTask.title
+            } a ${getTimeDiff(
+              +new Date(lastCompletedTask.completedAt),
+              +new Date()
+            )}`
+          : 'Nenhuma tarefa concluída',
+      selectInfo: (objectOptions) =>
+        `📋 Selecione entre as seguintes opções: ${Object.values(
+          objectOptions
+        ).join(', ')}`,
+    },
   },
   'en-us': {
     app: {
@@ -121,7 +134,8 @@ const texts = {
       summary: (total, pending, completed) =>
         `Total: ${total} | Pending: ${pending} | Completed: ${completed} 📊`,
       languageChanged: (newLanguage) => `Language changed to ${newLanguage} 🌐`,
-      languageSelected: (newLanguage) => `🌐 ${newLanguage} Language selected successfully! Click OK to apply!`,
+      languageSelected: (newLanguage) =>
+        `🌐 ${newLanguage} Language selected successfully! Click OK to apply!`,
       taskEmpty: '📋 Task List Empty!',
     },
     placeholders: {
@@ -140,7 +154,10 @@ const texts = {
       deleteAllTasksConfirm: (count) => `Delete all tasks (${count}) 🔄🗑️`,
       changeLanguage: '🌐 Change Language',
       toggleLanguage: '🌐 Choose between Portuguese, English and Spanish',
-      toggleTask: (completed, title) => completed ? `🛑 Mark ${title} as pending.` : `✅ Mark ${title} as completed.`
+      toggleTask: (completed, title) =>
+        completed
+          ? `🛑 Mark ${title} as pending.`
+          : `✅ Mark ${title} as completed.`,
     },
     filters: {
       status: {
@@ -163,11 +180,23 @@ const texts = {
     labels: {
       taskList: '📋 Task List',
       delete: 'Delete 🗑️',
-    },infos: {
+    },
+    infos: {
       sizeInfo: 'The sizes are approximate and may vary. 🗂️',
-      lastCompletedTask: (lastCompletedTask) => lastCompletedTask?.completed?`⏱️ Last completed task: ${lastCompletedTask.title} at ${getTimeDiff(+new Date(lastCompletedTask.completedAt), +new Date())}`: 'No tasks completed',
-      selectInfo: (objectOptions) => `📋 Select between the following options: ${Object.values(objectOptions)}`
-    }
+      lastCompletedTask: (lastCompletedTask) =>
+        lastCompletedTask?.completed
+          ? `⏱️ Last completed task: ${
+              lastCompletedTask.title
+            } at ${getTimeDiff(
+              +new Date(lastCompletedTask.completedAt),
+              +new Date()
+            )}`
+          : 'No tasks completed',
+      selectInfo: (objectOptions) =>
+        `📋 Select between the following options: ${Object.values(
+          objectOptions
+        )}`,
+    },
   },
   'es-es': {
     app: {
@@ -201,7 +230,8 @@ const texts = {
       summary: (total, pending, completed) =>
         `Total: ${total} | Pendientes: ${pending} | Completadas: ${completed} 📊`,
       languageChanged: (newLanguage) => `Idioma cambiado a ${newLanguage} 🌐`,
-      languageSelected: (newLanguage) => `🌐 ${newLanguage} Idioma seleccionado con éxito! Click OK para aplicar!`,
+      languageSelected: (newLanguage) =>
+        `🌐 ${newLanguage} Idioma seleccionado con éxito! Click OK para aplicar!`,
       taskEmpty: '📋 Lista de Tareas Vacía!',
     },
     placeholders: {
@@ -221,7 +251,10 @@ const texts = {
         `Eliminar todas las tareas (${count}) 🔄🗑️`,
       changeLanguage: '🌐 Cambiar Idioma',
       toggleLanguage: '🌐 Elije entre Portugués, Inglés y Español',
-      toggleTask: (completed, title) => completed ? `🛑 Marcar ${title} como pendiente.` : `✅ Marcar ${title} como completada.`
+      toggleTask: (completed, title) =>
+        completed
+          ? `🛑 Marcar ${title} como pendiente.`
+          : `✅ Marcar ${title} como completada.`,
     },
     filters: {
       status: {
@@ -247,9 +280,20 @@ const texts = {
     },
     infos: {
       sizeInfo: 'Los tamaños son aproximados y pueden variar. 🗂️',
-      lastCompletedTask: (lastCompletedTask) => lastCompletedTask?.completed?`⏱️ Última tarea completada: ${lastCompletedTask.title} hace ${getTimeDiff(+new Date(lastCompletedTask.completedAt), +new Date())}`: 'No se ha completado ninguna tarea',
-      selectInfo: (objectOptions) => `📋 Selecciona entre las siguientes opciones: ${Object.values(objectOptions)}`
-    }
+      lastCompletedTask: (lastCompletedTask) =>
+        lastCompletedTask?.completed
+          ? `⏱️ Última tarea completada: ${
+              lastCompletedTask.title
+            } hace ${getTimeDiff(
+              +new Date(lastCompletedTask.completedAt),
+              +new Date()
+            )}`
+          : 'No se ha completado ninguna tarea',
+      selectInfo: (objectOptions) =>
+        `📋 Selecciona entre las siguientes opciones: ${Object.values(
+          objectOptions
+        )}`,
+    },
   },
 };
 

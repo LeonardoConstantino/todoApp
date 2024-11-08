@@ -3,6 +3,7 @@
  * @import { Task } from '../utils/types.js'
  * @import { ElementConfig } from '../utils/types.js'
  */
+
 import {
   getComponent,
   getLang,
@@ -10,7 +11,11 @@ import {
   getTextSpan,
 } from '../utils/helpers.js';
 import { createButton } from '../components/button.js';
-import { toggleTask, deleteTask, handleChangePriority } from '../services/handlers.js';
+import {
+  toggleTask,
+  deleteTask,
+  handleChangePriority,
+} from '../services/handlers.js';
 import {
   capitalizeFirstLetter,
   formatDate,
@@ -56,23 +61,18 @@ const getTaskList = (tasks) => {
   const filteredTasks = getFilteredTasks(tasks);
 
   return filteredTasks.map((task) => {
-    const {
-      id,
-      title,
-      priority,
-      completed,
-      createdAt,
-      completedAt,
-    } = task;
+    const { id, title, priority, completed, createdAt, completedAt } = task;
 
     const tasksPriorityButton = createButton(
       capitalizeFirstLetter(getText(getLang(), 'priorities')[priority]),
-      (e)=>{handleChangePriority(e, tasks)},
+      (e) => {
+        handleChangePriority(e, tasks);
+      },
       '',
       `task-priority priority-${priority}`,
       getText(getLang(), 'infos.selectInfo', getText(getLang(), 'priorities'))
-    )
-    if(tasksPriorityButton.props) tasksPriorityButton.props['data-id'] = id;
+    );
+    if (tasksPriorityButton.props) tasksPriorityButton.props['data-id'] = id;
 
     const taskTitle = getComponent('span', getTextComponent(title));
     taskTitle.props.class = 'task-title';
@@ -84,11 +84,7 @@ const getTaskList = (tasks) => {
     if (completed) inputCheckbox.props.checked = '';
     inputCheckbox.props.onchange = () => toggleTask(id, tasks);
 
-    const taskHeader = getComponent(
-      'div',
-      inputCheckbox,
-      taskTitle,
-    );
+    const taskHeader = getComponent('div', inputCheckbox, taskTitle);
     taskHeader.props.class = 'task-header';
 
     const taskDates = getComponent('div');
@@ -119,7 +115,12 @@ const getTaskList = (tasks) => {
 
     const label = getComponent('label', taskHeader, taskDates);
     label.props.for = `task-${id}`;
-    label.props.title = getText(getLang(), 'actions.toggleTask', completed, title);
+    label.props.title = getText(
+      getLang(),
+      'actions.toggleTask',
+      completed,
+      title
+    );
 
     const divWrapper = getComponent('div', label, tasksPriorityButton);
     divWrapper.props.class = 'task-wrapper';
@@ -166,7 +167,6 @@ export const renderTasks = (tasks) => {
   if (taskListContainer) {
     EventDelegator.cleanup(taskListContainer);
     taskListContainer.innerHTML = '';
-    // console.log(EventDelegator.eventHandlers)
 
     taskList.forEach((task) => {
       renderElement(task, true, taskListContainer);

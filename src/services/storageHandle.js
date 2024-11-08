@@ -1,7 +1,7 @@
 /**
  * @import { Task } from '../utils/types.js'
  */
-import { storageUtil } from "../utils/storageUtil";
+import { storageUtil } from '../utils/storageUtil';
 
 /**
  * Define o prefixo da aplicação para o armazenamento local.

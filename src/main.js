@@ -5,12 +5,11 @@ import './assets/styles/main.css';
 // Importa funções e módulos utilitários e páginas para a estrutura da aplicação
 import { renderElement } from './utils/renderElement.js';// Renderiza elementos no DOM
 import { home } from './pages/home.js';// Página inicial da aplicação
-import { storageUtil } from './utils/storageUtil.js';// Utilitário de armazenamento local
 import { renderTasks } from './layout/tasks.js';// Renderiza tarefas
 import { showSnackbar } from './utils/showSnackbar.js';// Exibe notificações
 import { getText } from './services/dialogHandler.js';// Obtém texto de um diálogo
 import { getLang } from './utils/helpers.js';// Obtém a linguagem atual
-import { tasks } from './services/storageHandle.js';// Obtém tarefas do armazenamento local
+import { currentTheme, tasks } from './services/storageHandle.js';// Obtém tarefas do armazenamento local
 
 /**
  * @function main
@@ -21,9 +20,8 @@ const main = () => {
     // Seleciona o elemento principal da aplicação no DOM
     const app = document.getElementById('app');
         
-    // Obtém o tema atual do armazenamento local ou define como 'light' se não houver tema salvo
-    const theme = storageUtil.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', theme);
+    // Obtém o tema atual da aplicação do armazenamento local
+    document.documentElement.setAttribute('data-theme', currentTheme);
   
     // Lança um erro se o elemento 'app' não for encontrado no DOM
     if (!app) throw new Error('Elemento com o ID "app" não encontrado.');

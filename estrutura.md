@@ -1,29 +1,79 @@
-# Explicação da Estrutura
+# Estrutura do Projeto
+A estrutura de arquivos do projeto é organizada em pastas para facilitar a manutenção e a expansão. Abaixo está uma descrição das principais seções:
 
-| pasta/arquivo | conteúdo |
-|:---:|:---|
-| components/ | Contém componentes reutilizáveis que podem ser usados em várias partes da aplicação. |
-| layout/ | Contém componentes relacionados ao layout, como navegação, cabeçalhos, rodapés, etc. |
-| pages/ | Contém scripts específicos de páginas, representando as diferentes páginas da aplicação. |
-| services/ | Contém serviços para lidar com lógica de negócios, como chamadas de API e autenticação. |
-| utils/ | Contém funções utilitárias, constantes e validadores que podem ser usados em toda a aplicação. |
-| assets/ | Contém recursos estáticos como imagens, estilos e fontes. |
-| index.html | O ponto de entrada principal da aplicação. |
-| main.js | O arquivo JavaScript principal que importa e inicializa os módulos necessários. |
+## 📂 src
+Contém todos os arquivos-fonte da aplicação.
+
+- **📂assets:** Armazena os recursos visuais e arquivos de estilo.
+
+    - **images**: Imagens e ícones, como favicon.ico, image.png, e representacao.png.
+    - **styles**: Arquivos CSS organizados em subpastas:
+        - **base**: Inclui estilos globais como _reset.css e _typography.css.
+        - **components**: Estilização específica para componentes reutilizáveis, como botões (_buttons.css), dropdowns (_dropdown.css), modais (_modal.css), snackbar (_snackbar.css) e textarea (_textarea.css).
+        - **layout**: Estilos de layout para o cabeçalho, rodapé, contêiner principal e lista de tarefas.
+        - **pages**: Estilos específicos para páginas, incluindo pages_home.css para a página inicial.
+        - **themes**: Inclui temas, como themes_dark.css para o modo escuro e themes_print.css para impressão.
+        - **utils**: Utilitários CSS, como variáveis e helpers para serem usados em todo o projeto.
+    - **main.css**: Importa todos os estilos principais.
+- **📂components**: Componentes da interface de usuário, como botões, inputs de rádio, modais e snackbar, todos escritos em JavaScript.
+
+- **📂layout**: Gerencia o layout global da aplicação com componentes como o cabeçalho (header.js), rodapé (footer.js) e a área de tarefas (tasks.js).
+
+- **📂pages**: Contém páginas da aplicação. O home.js representa a página principal.
+
+- **📂services**: Contém lógica de serviços para lidar com eventos de diálogo (dialogHandler.js), manipuladores gerais (handlers.js) e manipulação de armazenamento local (storageHandle.js).
+
+- **📂utils**: Utilitários auxiliares que suportam a lógica principal do aplicativo.
+
+    - **constants.js**: Define constantes globais.
+    - **helpers.js**: Funções auxiliares gerais.
+    - **renderElement.js**: Função para renderização de elementos dinâmicos.
+    - **showSnackbar.js**: Função para exibir mensagens do tipo snackbar.
+    - **storageUtil.js**: Funções de utilitários para armazenamento.
+    - **types.js**: Tipos e interfaces utilizados no código.
+    - **main.js**: Ponto de entrada principal da aplicação que inicializa e carrega todos os módulos.
+
+## Arquivos Principais na Raiz
+- **index.html**: Página HTML principal que carrega a aplicação.
+- **LICENSE.txt**: Arquivo de licença do projeto.
+- **package.json** e **package-lock.json**: Gerenciamento de dependências.
+- **README.md**: Descrição do projeto.
+- **vite.config.js**: Configuração do Vite para desenvolvimento local.
 
 ```
 📦todoApp
  ┣ 📂src
  ┃ ┣ 📂assets
- ┃ ┃ ┣ 📂fonts
  ┃ ┃ ┣ 📂images
  ┃ ┃ ┃ ┣ 📜favicon.ico
  ┃ ┃ ┃ ┣ 📜image.png
  ┃ ┃ ┃ ┗ 📜representacao.png
  ┃ ┃ ┗ 📂styles
+ ┃ ┃ ┃ ┣ 📂base
+ ┃ ┃ ┃ ┃ ┣ 📜_reset.css
+ ┃ ┃ ┃ ┃ ┗ 📜_typography.css
+ ┃ ┃ ┃ ┣ 📂components
+ ┃ ┃ ┃ ┃ ┣ 📜_buttons.css
+ ┃ ┃ ┃ ┃ ┣ 📜_dropdown.css
+ ┃ ┃ ┃ ┃ ┣ 📜_modal.css
+ ┃ ┃ ┃ ┃ ┣ 📜_snackbar.css
+ ┃ ┃ ┃ ┃ ┗ 📜_textarea.css
+ ┃ ┃ ┃ ┣ 📂layout
+ ┃ ┃ ┃ ┃ ┣ 📜layout_container.css
+ ┃ ┃ ┃ ┃ ┣ 📜layout_footer.css
+ ┃ ┃ ┃ ┃ ┣ 📜layout_header.css
+ ┃ ┃ ┃ ┃ ┗ 📜layout_task.css
+ ┃ ┃ ┃ ┣ 📂pages
+ ┃ ┃ ┃ ┃ ┗ 📜pages_home.css
+ ┃ ┃ ┃ ┣ 📂themes
+ ┃ ┃ ┃ ┃ ┣ 📜themes_dark.css
+ ┃ ┃ ┃ ┃ ┗ 📜themes_print.css
+ ┃ ┃ ┃ ┣ 📂utils
+ ┃ ┃ ┃ ┃ ┣ 📜utils_helpers.css
+ ┃ ┃ ┃ ┃ ┗ 📜utils_variables.css
+ ┃ ┃ ┃ ┗ 📜main.css
  ┃ ┣ 📂components
  ┃ ┃ ┣ 📜button.js
- ┃ ┃ ┣ 📜carousel.js
  ┃ ┃ ┣ 📜inputRadio.js
  ┃ ┃ ┣ 📜modal.js
  ┃ ┃ ┗ 📜snackbar.js
@@ -52,57 +102,5 @@
  ┣ 📜package-lock.json
  ┣ 📜package.json
  ┣ 📜README.md
- ┣ 📜todoApp.html
  ┗ 📜vite.config.js
-```
-
-## Estrutura da pasta styles
-
-| pasta/arquivo | conteúdo |
-|:---:|:---|
-| Base | A pasta base/ contém estilos básicos e padrões para o projeto. Aqui você pode encontrar um arquivo _reset.css e possivelmente uma folha de estilo como _base.css, que cuida de estilos para toda a aplicação.|
-|Layout| Na pasta layout/ estão os estilos para o layout da aplicação. Isso inclui folhas de estilo padrão como _header.css, _footer.css, _sidebar.css, bem como estilos relacionados ao layout, como grades e contêineres.|
-|Components|A pasta components/ é dedicada aos componentes que podem ser reutilizados nas páginas. Exemplos de componentes incluem buttons.css, modals.css, cards.css. É importante notar a diferença entre Components e Layout. Enquanto o Layout trata dos layouts globais da página, a pasta Components lida com componentes menores e reutilizáveis.|
-|Pages|A pasta pages/ contém estilos específicos para páginas individuais. Por exemplo, você pode encontrar um arquivo de estilo como _home.css ou _login.css|
-|Themes|Para aplicações maiores que requerem suporte a vários temas, a estrutura reserva uma pasta para esses temas. Aqui você pode incluir estilos para diferentes temas utilizados na aplicação.|
-|Abstract|A pasta abstract/ lida com todas as ferramentas e utilitários do SASS que podem ser utilizados em todo o projeto. Isso inclui arquivos como _variables.css, _mixins.css, _functions.css, entre outros.|
-|Vendors|Na pasta vendors/ estão contidos conteúdos externos, como CSS de bibliotecas ou frameworks externos, por exemplo, Normalize, Bootstrap, JQueryUI, etc. Os arquivos de inclusão desses estilos podem ser nomeados como _normalize.css, _bootstrap.css, etc.|
-|main.css|O ficheiro principal (normalmente chamado de main.css) também sendo o único ficheiro que não possui underscore.|
-
-No main.css não deve conter nada além de imports de outros ficheiros — Isto pois, é importante preservarmos a legibilidade no ficheiro principal.
-
-#### Para preservar a legibilidade, o arquivo principal deve respeitar estas diretrizes:
-
-- Um arquivo por @import;
-- Um @import por linha;
-- Sem nova linha entre dois @imports da mesma pasta;
-- Uma nova linha após o último @import de uma pasta;
-
-```
-📂styles
-┣ 📂base
-┃ ┣ 📜_reset.css
-┃ ┗ 📜_typography.css
-┣ 📂components
-┃ ┣ 📜_buttons.css
-┃ ┣ 📜_checkbox.css
-┃ ┣ 📜_dropdown.css
-┃ ┣ 📜_modal.css
-┃ ┣ 📜_snackbar.css
-┃ ┗ 📜_textarea.css
-┣ 📂layout
-┃ ┣ 📜layout_container.css
-┃ ┣ 📜layout_footer.css
-┃ ┣ 📜layout_header.css
-┃ ┗ 📜layout_task.css
-┣ 📂pages
-┃ ┗ 📜pages_home.css
-┣ 📂themes
-┃ ┣ 📜themes_dark.css
-┃ ┗ 📜themes_print.css
-┣ 📂utils
-┃ ┣ 📜utils_animation.css
-┃ ┣ 📜utils_helpers.css
-┃ ┗ 📜utils_variables.css
-┗ 📜main.css
 ```

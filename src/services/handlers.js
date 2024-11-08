@@ -146,6 +146,39 @@ export const deleteTask = (id, tasks) => {
 };
 
 /**
+ * Altera a prioridade de uma tarefa na lista de tarefas.
+ *
+ * @param {Event} e - O evento de clique do usuário.
+ * @param {Array<Task>} tasks - A lista de tarefas.
+ * @returns {void}
+ */
+export const handleChangePriority = (e, tasks) => {
+  if (!(e.target instanceof HTMLElement)) return;
+
+  const button = e.target.closest('button');
+  const id = button?.dataset.id;
+  if (!button || !id) return;
+
+  /** @type {Task | undefined} */
+  const task = tasks.find((t) => t.id === Number(id));
+  if (!task) return;
+
+  const availablePriorities = Object.keys(getText(getLang(), 'priorities'));
+  const currentPriorityIndex = availablePriorities.indexOf(task.priority);
+  
+  // Calcula o próximo índice de prioridade de forma circular
+  const nextPriorityIndex = (currentPriorityIndex + 1) % availablePriorities.length;
+  task.priority = availablePriorities[nextPriorityIndex];
+
+  const updatedPriority = getText(getLang(), 'priorities')[task.priority];
+
+  saveTasks(tasks);
+  renderTasks(tasks);
+  showSnackbar(getText(getLang(), 'notifications.priorityUpdated', updatedPriority));
+};
+
+
+/**
  * Exclui todas as tarefas da lista de tarefas.
  *
  * @returns {void}

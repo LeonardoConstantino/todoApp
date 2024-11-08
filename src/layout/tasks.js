@@ -10,7 +10,7 @@ import {
   getTextSpan,
 } from '../utils/helpers.js';
 import { createButton } from '../components/button.js';
-import { toggleTask, deleteTask } from '../services/handlers.js';
+import { toggleTask, deleteTask, handleChangePriority } from '../services/handlers.js';
 import {
   capitalizeFirstLetter,
   formatDate,
@@ -65,13 +65,14 @@ const getTaskList = (tasks) => {
       completedAt,
     } = task;
 
-    const taskPriority = getComponent(
-      'span',
-      getTextComponent(
-        capitalizeFirstLetter(getText(getLang(), 'priorities')[priority])
-      )
-    );
-    taskPriority.props.class = `task-priority priority-${priority}`;
+    const tasksPriorityButton = createButton(
+      capitalizeFirstLetter(getText(getLang(), 'priorities')[priority]),
+      (e)=>{handleChangePriority(e, tasks)},
+      '',
+      `task-priority priority-${priority}`,
+      getText(getLang(), 'infos.selectInfo', getText(getLang(), 'priorities'))
+    )
+    if(tasksPriorityButton.props) tasksPriorityButton.props['data-id'] = id;
 
     const taskTitle = getComponent('span', getTextComponent(title));
     taskTitle.props.class = 'task-title';
@@ -87,7 +88,6 @@ const getTaskList = (tasks) => {
       'div',
       inputCheckbox,
       taskTitle,
-      taskPriority
     );
     taskHeader.props.class = 'task-header';
 
@@ -118,9 +118,11 @@ const getTaskList = (tasks) => {
     taskDates.props.class = 'task-dates';
 
     const label = getComponent('label', taskHeader, taskDates);
-    label.props.class = 'task-wrapper';
     label.props.for = `task-${id}`;
     label.props.title = getText(getLang(), 'actions.toggleTask', completed, title);
+
+    const divWrapper = getComponent('div', label, tasksPriorityButton);
+    divWrapper.props.class = 'task-wrapper';
 
     const deleteButton = createButton(
       getText(getLang(), 'labels.delete'),
@@ -133,7 +135,7 @@ const getTaskList = (tasks) => {
     const taskActions = getComponent('div', deleteButton);
     taskActions.props.class = 'task-actions';
 
-    const divTaskCard = getComponent('div', label, taskActions);
+    const divTaskCard = getComponent('div', divWrapper, taskActions);
     divTaskCard.props.class = `task-card ${completed ? 'task-completed' : ''}`;
     return divTaskCard;
   });

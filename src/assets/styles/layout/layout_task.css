@@ -8,13 +8,24 @@
   gap: var(--spacing-p);
 }
 
+.task-card .task-wrapper{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  gap: var(--spacing-p);
+}
+
+.task-card .task-wrapper label {
+  flex: 1;
+}
+
 .task-header {
   display: flex;
   align-items: center;
   gap: var(--spacing-p);
 }
 
-.task-wrapper input[type='checkbox'] {
+.task-header input[type='checkbox'] {
   width: var(--spacing);
   height: var(--spacing);
   cursor: pointer;
@@ -33,6 +44,7 @@
 }
 
 .task-priority {
+  align-self: flex-start;
   padding: var(--spacing-xp) var(--spacing-pp);
   border-radius: var(--border-radius);
   font-size: 0.8em;

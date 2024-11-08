@@ -3,6 +3,7 @@ button {
   border: none;
   border-radius: var(--border-radius);
   cursor: pointer;
+  user-select: none;
   background: var(--accent);
   color: var(--text-primary);
   transition: var(--animation-duration);
@@ -12,6 +13,7 @@ button {
 button:hover {
   opacity: 0.9;
   transform: scale(1.02);
+  box-shadow: 0 4px 8px var(--shadow);
 }
 
 button.theme-toggle {

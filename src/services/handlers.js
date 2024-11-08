@@ -61,7 +61,16 @@ export const addTasks = (e) => {
   /** @type {HTMLSelectElement | null} */
   const prioritySelect = document.querySelector('select#prioritySelect');
   const priority = prioritySelect ? prioritySelect.value : 'low';
-  const taskLines = input?.value.trim().split('\n') || [];
+  const taskLines =
+    input?.value
+      .trim()
+      .split('\n')
+      .filter((line) => Boolean(line)) || [];
+
+  if (taskLines.length === 0) {
+    showSnackbar(getText(getLang(), 'notifications.taskEmpty'));
+    return;
+  }
 
   taskLines.forEach((title) => {
     if (title.trim()) {
@@ -155,7 +164,7 @@ export const deleteAllTasks = () => {
  * @param {Event} e - O evento de clique do usuário.
  * @returns {void}
  */
-export const showMessageSelectedLang = (e) =>{
+export const showMessageSelectedLang = (e) => {
   e.preventDefault();
   if (!(e.target instanceof HTMLElement)) return;
 
@@ -167,9 +176,15 @@ export const showMessageSelectedLang = (e) =>{
   );
 
   if (selectedLanguage instanceof HTMLInputElement) {
-    showSnackbar(getText(getLang(), 'notifications.languageSelected', selectedLanguage.value));
+    showSnackbar(
+      getText(
+        getLang(),
+        'notifications.languageSelected',
+        selectedLanguage.value
+      )
+    );
   }
-}
+};
 
 /**
  * Exibe um modal na aplicação.

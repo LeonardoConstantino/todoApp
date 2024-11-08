@@ -119,6 +119,8 @@ const getTaskList = (tasks) => {
 
     const label = getComponent('label', taskHeader, taskDates);
     label.props.class = 'task-wrapper';
+    label.props.for = `task-${id}`;
+    label.props.title = getText(getLang(), 'actions.toggleTask', completed, title);
 
     const deleteButton = createButton(
       getText(getLang(), 'labels.delete'),

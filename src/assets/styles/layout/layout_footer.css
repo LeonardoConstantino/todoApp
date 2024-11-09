@@ -3,3 +3,16 @@ footer {
   margin-top: 20px;
   justify-content: flex-end;
 }
+
+.remove-all-modal {
+  padding: var(--spacing-gg);
+  padding-bottom: var(--spacing-g);
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.remove-all-modal h3 {
+  font-size: 1.25em;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing);
+}

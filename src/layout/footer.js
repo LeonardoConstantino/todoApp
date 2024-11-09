@@ -13,7 +13,7 @@ const modalContent = getComponent('div',
 
 const showModalButton = createButton(
   getText(getLang(), 'actions.deleteTasks'),
-  ()=>{showModal(modalContent, deleteAllTasks)},
+  ()=>{showModal(modalContent, 'remove-all-modal', deleteAllTasks)},
   '',
   'btn-remove-all',
 );

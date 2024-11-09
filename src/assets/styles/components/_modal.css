@@ -20,7 +20,7 @@ dialog::backdrop {
   background: none;
   border: none;
   color: var(--text-secondary);
-  font-size: 16px;
+  font-size: 1em;
   position: absolute;
   padding: var(--spacing-p);
   top: 0px;

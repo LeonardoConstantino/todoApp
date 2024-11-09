@@ -10,7 +10,7 @@ import { showSnackbar } from '../utils/showSnackbar.js';
 import { tasks } from './storageHandle.js';
 import { getText } from './dialogHandler.js';
 import { renderElement } from '../utils/renderElement.js';
-import { getModal } from '../components/modal.js';
+import { closeModal, getModal } from '../components/modal.js';
 
 /**
  * Alterna o tema da aplicação entre claro e escuro.
@@ -223,30 +223,14 @@ export const showMessageSelectedLang = (e) => {
  * Exibe um modal na aplicação.
  *
  * @param {any} content - O conteúdo a ser exibido no modal.
+ * @param {string} classModal - A classe CSS para estilizar o modal.
  * @param {Function} confirmeHandler - A função a ser chamada quando o usuário confirmar o modal.
  * @returns {void}
  */
-export const showModal = (content, confirmeHandler) => {
-  const modal = renderElement(getModal(content, confirmeHandler), true);
+export const showModal = (content, classModal, confirmeHandler) => {
+  const modal = renderElement(getModal(content, classModal, confirmeHandler), true);
   if (modal instanceof HTMLDialogElement) {
     modal.showModal();
-  }
-};
-
-/**
- * Fecha um modal exibido na aplicação.
- *
- * @param {Event} e - O evento de clique do usuário que acionou o fechamento do modal.
- * @returns {void}
- */
-export const closeModal = (e) => {
-  e.preventDefault();
-  if (!(e.target instanceof HTMLElement)) return;
-
-  const modal = e.target.closest('dialog');
-  if (modal instanceof HTMLDialogElement) {
-    modal.close();
-    modal.remove();
   }
 };
 

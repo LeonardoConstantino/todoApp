@@ -74,7 +74,7 @@ const toggleThemeButton = createButton(
 const langModalButton = createButton(
   getText(getLang(), 'actions.changeLanguage'),
   () => {
-    showModal(modalContent, toggleLanguage);
+    showModal(modalContent, 'lang-modal', toggleLanguage);
   },
   '',
   'lang-modal-button',

@@ -13,12 +13,14 @@ import {
   addTasks,
   applyFilters,
   handleTasksView,
+  inputSearchHandler,
   togglePriority,
 } from '../services/handlers.js';
 import { header } from '../layout/header.js';
 import { footer } from '../layout/footer.js';
 import { tasks } from '../services/storageHandle.js';
 import { getText } from '../services/dialogHandler.js';
+import { getInputSearch } from '../components/inputSearch.js';
 
 const lastCompletedTask = getLastCompletedTask(tasks);
 
@@ -112,7 +114,15 @@ const tasksViewButton = createButton(
   getText(getLang(), 'actions.tasksView', false)
 );
 
-const filters = getComponent('div', statusFilter, priorityFilter, tasksViewButton);
+const inputSearch = getInputSearch(
+  inputSearchHandler,
+  'search',
+  'search-task',
+  getText(getLang(), 'placeholders.search'),
+  getText(getLang(), 'infos.searchInfo')
+);
+
+const filters = getComponent('div', statusFilter, priorityFilter, tasksViewButton, inputSearch);
 filters.props.class = 'filters';
 
 const taskList = getComponent('div');

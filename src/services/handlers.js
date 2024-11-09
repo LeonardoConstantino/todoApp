@@ -289,3 +289,23 @@ export const handleTasksView = (e) => {
   button.title = getText(getLang(), 'actions.tasksView', !isCompact)
   buttonTextWrapper.textContent = getText(getLang(), 'actions.tasksView', !isCompact);
 }
+
+let debounceTimeout;
+
+export const inputSearchHandler = (e) => {
+  e.preventDefault();
+  if (!(e.target instanceof HTMLInputElement)) return;
+
+  const inputValue = e.target.value.toLowerCase().trim();
+
+  clearTimeout(debounceTimeout);
+
+  debounceTimeout = setTimeout(() => {
+    const filteredTasks = tasks.filter((task) => {
+      const taskText = task.title.toLowerCase();
+      return taskText.includes(inputValue);
+    });
+
+    renderTasks(filteredTasks);
+  }, 300);
+};

@@ -43,6 +43,7 @@ const texts = {
     },
     placeholders: {
       taskInput: '📝 Digite suas tarefas (uma por linha)',
+      search: 'Pesquisar Tarefas',
     },
     priorities: {
       low: 'Baixa 🔵',
@@ -101,6 +102,7 @@ const texts = {
         `📋 Selecione entre as seguintes opções: ${Object.values(
           objectOptions
         ).join(', ')}`,
+      searchInfo: '🔍 Pesquise pelo titulo.'
     },
   },
   'en-us': {
@@ -141,6 +143,7 @@ const texts = {
     },
     placeholders: {
       taskInput: '📝 Enter your tasks (one per line)',
+      search: 'Search tasks',
     },
     priorities: {
       low: 'Low 🔵',
@@ -198,6 +201,7 @@ const texts = {
         `📋 Select between the following options: ${Object.values(
           objectOptions
         )}`,
+      searchInfo: '🔍 Search for title.'
     },
   },
   'es-es': {
@@ -238,6 +242,7 @@ const texts = {
     },
     placeholders: {
       taskInput: '📝 Escribe tus tareas (una por línea)',
+      search: 'Buscar tareas',
     },
     priorities: {
       low: 'Baja 🔵',
@@ -296,6 +301,7 @@ const texts = {
         `📋 Selecciona entre las siguientes opciones: ${Object.values(
           objectOptions
         )}`,
+      searchInfo: '🔍 Buscar por título.'
     },
   },
 };

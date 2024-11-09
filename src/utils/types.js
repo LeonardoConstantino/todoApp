@@ -20,9 +20,31 @@
  */
 
 /**
+ * @typedef {ElementConfig & {
+ *   props: {
+ *     type?: string;
+ *     placeholder?: string;
+ *     onInput?: Function;
+ *     name?: string;
+ *   }
+ * }} InputElementConfig - Configuração específica para elementos do tipo input.
+ */
+
+/**
+ * @typedef {ElementConfig & {
+ *   props: {
+ *     for?: string;
+ *     title?: string;
+ *   }
+ * }} labelInputElementConfig - Configuração específica para elementos do tipo input.
+ */
+
+/**
  * Exporta os types para uso em outros arquivos
  * @typedef {object} Types
  * @property {Task} TASKS - Tipos de jogos disponíveis.
  * @property {ElementConfig} ELEMENTCONFIG - Tipos de cores.
+ * @property {InputElementConfig} INPUTELEMENTCONFIG
+ * @property {labelInputElementConfig} LABELINPUTELEMENTCONFIG
  */
 module.exports = Types;

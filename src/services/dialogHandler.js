@@ -61,8 +61,8 @@ const texts = {
       toggleLanguage: '🌐 Mudar Idioma! Português, English e Español',
       toggleTask: (completed, title) =>
         completed
-          ? `🛑 Marcar ${title} como pendente.`
-          : `✅ Marcar ${title} como concluída.`,
+          ? `🛑 Marcar "${title}" como pendente.`
+          : `✅ Marcar "${title}" como concluída.`,
       tasksView: (isCompact) => isCompact ? 'Descompactar 📋' : 'Compactar 📋',
     },
     filters: {
@@ -160,8 +160,8 @@ const texts = {
       toggleLanguage: '🌐 Choose between Portuguese, English and Spanish',
       toggleTask: (completed, title) =>
         completed
-          ? `🛑 Mark ${title} as pending.`
-          : `✅ Mark ${title} as completed.`,
+          ? `🛑 Mark "${title}" as pending.`
+          : `✅ Mark "${title}" as completed.`,
       tasksView: (isCompact) => isCompact ? 'Uncompact 📋' : 'Compact 📋',
     },
     filters: {
@@ -260,8 +260,8 @@ const texts = {
       toggleLanguage: '🌐 Elije entre Portugués, Inglés y Español',
       toggleTask: (completed, title) =>
         completed
-          ? `🛑 Marcar ${title} como pendiente.`
-          : `✅ Marcar ${title} como completada.`,
+          ? `🛑 Marcar "${title}" como pendiente.`
+          : `✅ Marcar "${title}" como completada.`,
       tasksView: (isCompact) => isCompact ? 'Descompactar 📋' : 'Compactar 📋',
     },
     filters: {

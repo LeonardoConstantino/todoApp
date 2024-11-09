@@ -290,8 +290,21 @@ export const handleTasksView = (e) => {
   buttonTextWrapper.textContent = getText(getLang(), 'actions.tasksView', !isCompact);
 }
 
+/**
+ * Variável que armazena o ID do timeout para o debounce.
+ */
 let debounceTimeout;
 
+/**
+ * Manipulador de eventos para o campo de pesquisa de tarefas.
+ *
+ * Esse manipulador é responsável por filtrar as tarefas exibidas com base no
+ * valor digitado no campo de pesquisa. Ele utiliza um debounce para evitar
+ * atualizações excessivas da interface.
+ *
+ * @param {Event} e - O evento de entrada do usuário no campo de pesquisa.
+ * @returns {void}
+ */
 export const inputSearchHandler = (e) => {
   e.preventDefault();
   if (!(e.target instanceof HTMLInputElement)) return;

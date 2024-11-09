@@ -273,3 +273,19 @@ export const toggleLanguage = (e) => {
   closeModal(e);
   window.location.reload();
 };
+
+export const handleTasksView = (e) => {
+  e.preventDefault();
+  if (!(e.target instanceof HTMLElement)) return;
+
+  const button = e.target.closest('button');
+  const buttonTextWrapper = e.target.closest('span');
+  const taskList = document.querySelector('#taskList');
+  if (!button || !taskList || !buttonTextWrapper) return;
+
+  const isCompact = taskList.classList.contains('task-card-compact');
+  taskList.classList.toggle('task-card-compact', !isCompact);
+  
+  button.title = getText(getLang(), 'actions.tasksView', !isCompact)
+  buttonTextWrapper.textContent = getText(getLang(), 'actions.tasksView', !isCompact);
+}

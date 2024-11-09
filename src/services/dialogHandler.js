@@ -62,6 +62,7 @@ const texts = {
         completed
           ? `🛑 Marcar ${title} como pendente.`
           : `✅ Marcar ${title} como concluída.`,
+      tasksView: (isCompact) => isCompact ? 'Descompactar 📋' : 'Compactar 📋',
     },
     filters: {
       status: {
@@ -158,6 +159,7 @@ const texts = {
         completed
           ? `🛑 Mark ${title} as pending.`
           : `✅ Mark ${title} as completed.`,
+      tasksView: (isCompact) => isCompact ? 'Uncompact 📋' : 'Compact 📋',
     },
     filters: {
       status: {
@@ -255,6 +257,7 @@ const texts = {
         completed
           ? `🛑 Marcar ${title} como pendiente.`
           : `✅ Marcar ${title} como completada.`,
+      tasksView: (isCompact) => isCompact ? 'Descompactar 📋' : 'Compactar 📋',
     },
     filters: {
       status: {

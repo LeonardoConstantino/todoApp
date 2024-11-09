@@ -12,6 +12,7 @@ import { createButton } from '../components/button';
 import {
   addTasks,
   applyFilters,
+  handleTasksView,
   togglePriority,
 } from '../services/handlers.js';
 import { header } from '../layout/header.js';
@@ -103,7 +104,15 @@ const priorityFilter = getSelection(
 priorityFilter.props.id = 'priorityFilter';
 priorityFilter.props.onChange = applyFilters;
 
-const filters = getComponent('div', statusFilter, priorityFilter);
+const tasksViewButton = createButton(
+  getText(getLang(), 'actions.tasksView', false),
+  handleTasksView,
+  '',
+  'button-secondary',
+  getText(getLang(), 'actions.tasksView', false)
+);
+
+const filters = getComponent('div', statusFilter, priorityFilter, tasksViewButton);
 filters.props.class = 'filters';
 
 const taskList = getComponent('div');

@@ -67,7 +67,7 @@ const toggleThemeButton = createButton(
   getText(getLang(), 'actions.toggleTheme'),
   toggleTheme,
   '',
-  'theme-toggle',
+  'button-secondary',
   getText(getLang(), 'notifications.themeToggled', newTheme)
 );
 

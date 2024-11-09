@@ -16,13 +16,13 @@ button:hover {
   box-shadow: 0 4px 8px var(--shadow);
 }
 
-button.theme-toggle {
+button.button-secondary {
   background: var(--bg-secondary);
   border: 1px solid var(--border);
   color: var(--text-primary);
 }
 
-button.theme-toggle:hover {
+button.button-secondary:hover {
   background: var(--accent);
   color: var(--text-primary);
 }

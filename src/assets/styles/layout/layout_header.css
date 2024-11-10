@@ -27,43 +27,6 @@ header .header-actions {
   margin-bottom: var(--spacing);
 }
 
-.lang-modal fieldset {
-  border: 1px solid var(--border);
-  border-radius: var(--border-radius);
-  padding: var(--spacing-pp);
-  text-align: left;
-}
-
-.lang-modal legend {
-  font-weight: bold;
-  color: var(--text-secondary);
-  padding: 0 var(--spacing-xp);
-}
-
-.lang-modal label {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-pp);
-  padding: var(--spacing-pp);
-  border-radius: var(--border-radius);
-  transition: background-color 0.2s ease;
-  cursor: pointer;
-}
-
-.lang-modal label:hover {
-  background-color: var(--bg-secondary);
-}
-
-.lang-modal label span {
-  color: var(--text-primary);
-  font-size: 0.95em;
-}
-
-.lang-modal input[type='radio'] {
-  accent-color: var(--accent);
-  cursor: pointer;
-}
-
 .infos {
   font-size: 0.9em;
   color: var(--text-secondary);

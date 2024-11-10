@@ -1,7 +1,8 @@
 footer {
   display: flex;
-  margin-top: 20px;
+  margin-top: var(--spacing-g);
   justify-content: flex-end;
+  gap: var(--spacing-p);
 }
 
 .remove-all-modal {
@@ -15,4 +16,34 @@ footer {
   font-size: 1.25em;
   color: var(--text-primary);
   margin-bottom: var(--spacing);
+}
+
+.share-modal{
+  width: 90vw;
+}
+
+.share-modal fieldset{
+  display: flex;
+  flex-flow: row wrap;
+  gap: var(--spacing-p);
+}
+
+.share-modal fieldset label {
+  flex-flow: row-reverse wrap;
+}
+
+.share-modal .dialog-content pre {
+  background-color: var(--bg-secondary);
+  padding: var(--spacing-g);
+  margin-top: var(--spacing-p);
+  border-radius: var(--border-radius);
+  overflow-x: auto;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.share-modal .dialog-content code {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 1rem;
 }

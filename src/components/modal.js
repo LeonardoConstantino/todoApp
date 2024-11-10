@@ -2,6 +2,7 @@
  * @import { ElementConfig } from '../utils/types.js'
  */
 import { getComponent } from '../utils/helpers.js';
+import { EventDelegator } from '../utils/renderElement.js';
 import { createButton } from './button.js';
 
 /**
@@ -16,6 +17,7 @@ export const closeModal = (e) => {
 
   const modal = e.target.closest('dialog');
   if (modal instanceof HTMLDialogElement) {
+    EventDelegator.cleanup(modal);
     modal.close();
     modal.remove();
   }
@@ -63,7 +65,7 @@ export const getModal = (
     textBtnCancel,
     cancelHandler,
     '',
-    '',
+    'button-secondary',
     titleBtnCancel
   );
   if (cancelModalButton.props) cancelModalButton.props.formmethod = 'dialog';
@@ -74,6 +76,7 @@ export const getModal = (
   const closeButton = createButton('X', closeModal, '', 'close', 'Fechar');
 
   const modal = getComponent('dialog', closeButton, content, form);
+  if (content.props) content.props.class = 'dialog-content';
   modal.props.class = classForModal;
 
   return modal;

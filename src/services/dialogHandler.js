@@ -15,6 +15,9 @@ const texts = {
       modalDeleteTasks: {
         title: 'Tem certeza de que deseja remover todas as tarefas?',
       },
+      modalShareTasks: {
+        title: 'Compartilhar Tarefas!',
+      },
       'pt-br': 'Português 🇧🇷',
       'en-us': 'English 🇺🇸',
       'es-es': 'Español 🇪🇸',
@@ -40,6 +43,12 @@ const texts = {
       languageSelected: (newLanguage) =>
         `🌐 ${newLanguage} Selecionado com sucesso! Clique em OK para aplicar!`,
       taskEmpty: '📋 Lista de Tarefas Vazia!',
+      shareTasks: {
+        success: '🎉 Tarefas compartilhadas com sucesso!',
+        error: '❌ Erro ao compartilhar tarefas. Tente novamente.',
+        unsupported: '⚠️ Compartilhamento de tarefas não é suportado neste navegador.',
+      }
+      
     },
     placeholders: {
       taskInput: '📝 Digite suas tarefas (uma por linha)',
@@ -64,6 +73,8 @@ const texts = {
           ? `🛑 Marcar "${title}" como pendente.`
           : `✅ Marcar "${title}" como concluída.`,
       tasksView: (isCompact) => isCompact ? 'Descompactar 📋' : 'Compactar 📋',
+      shareTasks: '🔗 Compartilhar Tarefas',
+      chooseShareOptions: 'Escolha as opções de compartilhamento:',
     },
     filters: {
       status: {
@@ -114,6 +125,9 @@ const texts = {
       modalDeleteTasks: {
         title: 'Are you sure you want to remove all tasks?',
       },
+      modalShareTasks: {
+        title: 'Share Tasks!',
+      },
       'pt-br': 'Portuguese 🇧🇷',
       'en-us': 'English 🇺🇸',
       'es-es': 'Spanish 🇪🇸',
@@ -140,6 +154,11 @@ const texts = {
       languageSelected: (newLanguage) =>
         `🌐 ${newLanguage} Language selected successfully! Click OK to apply!`,
       taskEmpty: '📋 Task List Empty!',
+      shareTasks: {
+        success: '🎉 Tasks shared successfully!',
+        error: '❌ Error sharing tasks. Try again.',
+        unsupported: '⚠️ Sharing tasks is not supported in this browser.',
+      }
     },
     placeholders: {
       taskInput: '📝 Enter your tasks (one per line)',
@@ -163,6 +182,8 @@ const texts = {
           ? `🛑 Mark "${title}" as pending.`
           : `✅ Mark "${title}" as completed.`,
       tasksView: (isCompact) => isCompact ? 'Uncompact 📋' : 'Compact 📋',
+      shareTasks: '🔗 Share Tasks',
+      chooseShareOptions: 'Choose the sharing options:',
     },
     filters: {
       status: {
@@ -213,6 +234,9 @@ const texts = {
       modalDeleteTasks: {
         title: '¿Estás seguro de querer eliminar todas las tareas?',
       },
+      modalShareTasks: {
+        title: '¡Comparte tus tareas!',
+      },
       'pt-br': 'Portugués 🇧🇷',
       'en-us': 'Inglés 🇺🇸',
       'es-es': 'Español 🇪🇸',
@@ -239,6 +263,11 @@ const texts = {
       languageSelected: (newLanguage) =>
         `🌐 ${newLanguage} Idioma seleccionado con éxito! Click OK para aplicar!`,
       taskEmpty: '📋 Lista de Tareas Vacía!',
+      shareTasks: {
+        success: '🎉 ¡Tareas compartidas con éxito!',
+        error: '❌ Error al compartir tareas. Inténtalo de nuevo.',
+        unsupported: '⚠️ Compartir tareas no es compatible en este navegador.',
+      }
     },
     placeholders: {
       taskInput: '📝 Escribe tus tareas (una por línea)',
@@ -263,6 +292,8 @@ const texts = {
           ? `🛑 Marcar "${title}" como pendiente.`
           : `✅ Marcar "${title}" como completada.`,
       tasksView: (isCompact) => isCompact ? 'Descompactar 📋' : 'Compactar 📋',
+      shareTasks: '🔗 Compartir Tareas',
+      chooseShareOptions: 'Elige las opciones de compartición:',
     },
     filters: {
       status: {

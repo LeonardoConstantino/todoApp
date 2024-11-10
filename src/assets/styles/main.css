@@ -3,6 +3,7 @@
 
 @import url('./components/_buttons.css');
 @import url('./components/_dropdown.css');
+@import url('./components/_fieldset.css');
 @import url('./components/_input-search.css');
 @import url('./components/_modal.css');
 @import url('./components/_snackbar.css');

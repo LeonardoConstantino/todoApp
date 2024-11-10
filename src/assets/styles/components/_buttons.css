@@ -20,9 +20,10 @@ button.button-secondary {
   background: var(--bg-secondary);
   border: 1px solid var(--border);
   color: var(--text-primary);
+  transition: border var(--animation-duration) ease;
 }
 
 button.button-secondary:hover {
-  background: var(--accent);
+  border: 1px solid var(--accent);
   color: var(--text-primary);
 }

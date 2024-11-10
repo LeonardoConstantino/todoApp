@@ -30,7 +30,7 @@ import { getText } from '../services/dialogHandler.js';
  * @param {Array< Task >} tasks - A lista de tarefas a ser filtrada.
  * @returns {Array< Task >} - A lista de tarefas filtrada.
  */
-const getFilteredTasks = (tasks) => {
+export const getFilteredTasks = (tasks) => {
   /** @type {HTMLSelectElement | null} */
   const selectStatusFilter = document.querySelector('select#statusFilter');
   const statusFilter = selectStatusFilter ? selectStatusFilter?.value : 'all';

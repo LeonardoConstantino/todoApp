@@ -4,13 +4,11 @@ import {
   getComponent,
   getLang,
   getLastCompletedTask,
-  getTextComponent,
   getTextSpan,
   updateStats,
 } from '../utils/helpers';
 import { createButton } from '../components/button';
 import {
-  addTasks,
   applyFilters,
   handleTasksView,
   inputSearchHandler,
@@ -21,6 +19,8 @@ import { footer } from '../layout/footer.js';
 import { tasks } from '../services/storageHandle.js';
 import { getText } from '../services/dialogHandler.js';
 import { getInputSearch } from '../components/inputSearch.js';
+import { getSelection } from '../components/selection.js';
+import { addTasks } from '../services/addTasksHandler.js';
 
 const lastCompletedTask = getLastCompletedTask(tasks);
 
@@ -47,33 +47,14 @@ infos.props.class = 'infos';
 
 const textarea = getComponent('textarea');
 textarea.props.id = 'taskInput';
+textarea.props.class = 'scrollbar';
 textarea.props.placeholder = getText(getLang(), 'placeholders.taskInput');
-
-/**
- * Cria um elemento de seleção (select) com opções baseadas em um objeto fornecido.
- *
- * @param {string} id - O ID do elemento de seleção.
- * @param {Object} objectOptions - Um objeto cujas chaves são os valores das opções e os valores são os rótulos das opções.
- * @returns {Object} - O elemento de seleção criado.
- */
-const getSelection = (id, objectOptions) => {
-  const options = Object.entries(objectOptions).map(([key, value]) => {
-    const option = getComponent('option', getTextComponent(value));
-    option.props.value = key;
-    return option;
-  });
-
-  const select = getComponent('select', ...options);
-  select.props.id = id;
-  select.props.title = getText(getLang(), 'infos.selectInfo', objectOptions);
-  return select;
-};
 
 const priorityOptions = getSelection(
   'prioritySelect',
-  getText(getLang(), 'priorities')
+  getText(getLang(), 'priorities'),
+  togglePriority
 );
-priorityOptions.props.onChange = togglePriority;
 
 const btnAddTasks = createButton(
   getText(getLang(), 'actions.addTasks'),
@@ -94,17 +75,15 @@ inputSection.props.class = 'input-section';
 
 const statusFilter = getSelection(
   'statusFilter',
-  getText(getLang(), 'filters.status')
+  getText(getLang(), 'filters.status'),
+  applyFilters
 );
-statusFilter.props.id = 'statusFilter';
-statusFilter.props.onChange = applyFilters;
 
 const priorityFilter = getSelection(
   'priorityFilter',
-  getText(getLang(), 'filters.priority')
+  getText(getLang(), 'filters.priority'),
+  applyFilters
 );
-priorityFilter.props.id = 'priorityFilter';
-priorityFilter.props.onChange = applyFilters;
 
 const tasksViewButton = createButton(
   getText(getLang(), 'actions.tasksView', false),

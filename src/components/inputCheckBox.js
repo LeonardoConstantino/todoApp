@@ -21,6 +21,7 @@ export const getInputCheckBox = (
   checked = false,
   className = '',
   id = '',
+  title = '',
   onChangeHandler = null
 ) => {
   if (!onChangeHandler || typeof onChangeHandler !== 'function') {
@@ -36,6 +37,7 @@ export const getInputCheckBox = (
 
   const label = getComponent('label', getTextSpan(textContent), input);
   label.props.class = `label-input-checked ${className}`;
+  if (title) label.props.title = title;
   if (id) label.props.for = id;
 
   return label;

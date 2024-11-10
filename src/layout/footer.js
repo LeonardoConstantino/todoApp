@@ -37,6 +37,7 @@ const checkBoxPriority = getInputCheckBox(
   false,
   '',
   'shareCheckBoxPriority',
+  getText(getLang(), 'labels.tolTipCheckBoxShare', 'Prioridades'),
   shareOptionsHandler
 );
 
@@ -46,6 +47,7 @@ const checkBoxCompleted = getInputCheckBox(
   false,
   '',
   'shareCheckBoxCompleted',
+  getText(getLang(), 'labels.tolTipCheckBoxShare', 'Status'),
   shareOptionsHandler
 );
 
@@ -55,6 +57,7 @@ const checkBoxCreatedAt = getInputCheckBox(
   false,
   '',
   'shareCheckBoxCreatedAt',
+  getText(getLang(), 'labels.tolTipCheckBoxShare', 'Data de criação'),
   shareOptionsHandler
 );
 const textContent = getComponent('code');

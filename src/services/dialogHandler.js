@@ -97,6 +97,7 @@ const texts = {
     labels: {
       taskList: '📋 Lista de Tarefas',
       delete: 'Excluir 🗑️',
+      tolTipCheckBoxShare: (tip)=> `Selecione o que exibir no compartilhamento: ${tip}`,
     },
     infos: {
       sizeInfo: 'Os tamanhos são aproximados e podem variar. 🗂️',
@@ -206,6 +207,7 @@ const texts = {
     labels: {
       taskList: '📋 Task List',
       delete: 'Delete 🗑️',
+      tolTipCheckBoxShare: (tip)=> `Select what to display in the share: ${tip}`,
     },
     infos: {
       sizeInfo: 'The sizes are approximate and may vary. 🗂️',
@@ -316,6 +318,7 @@ const texts = {
     labels: {
       taskList: '📋 Lista de Tareas',
       delete: 'Eliminar 🗑️',
+      tolTipCheckBoxShare: (tip)=> `Selecciona qué mostrar en el compartido: ${tip}`,
     },
     infos: {
       sizeInfo: 'Los tamaños son aproximados y pueden variar. 🗂️',

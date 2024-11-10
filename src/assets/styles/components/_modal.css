@@ -1,6 +1,7 @@
 dialog {
-  width: 300px;
-  max-width: 90%;
+  width: fit-content;
+  min-width: 300px;
+  max-width: 90vw;
   border-radius: var(--border-radius);
   padding: var(--spacing);
   background-color: var(--bg-primary);
@@ -12,7 +13,7 @@ dialog {
 }
 
 dialog::backdrop {
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(8px);
 }
 
@@ -26,30 +27,23 @@ dialog::backdrop {
   top: 0px;
   right: 0px;
   cursor: pointer;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .close:hover {
   color: var(--text-primary);
+  transform: scale(1.05) translate(-2px, 2px);
+  box-shadow: none;
 }
 
 dialog form button {
-  background-color: var(--bg-secondary);
-  color: var(--text-primary);
-  border: 1px solid var(--border);
-  border-radius: var(--border-radius);
-  padding: var(--spacing-pp) var(--spacing);
   margin: var(--spacing-p) var(--spacing-xp);
-}
-
-dialog form button:hover {
-  background-color: var(--accent);
-  color: var(--bg-primary);
 }
 
 dialog form {
   display: flex;
   justify-content: flex-end;
+  gap: var(--spacing-p);
 }
 
 dialog span {

@@ -98,7 +98,7 @@ export const updateStats = (tasks, isAppending = false) => {
   const divStats = document.querySelector('#stats');
 
   const lastCompletedTask = getLastCompletedTask(tasks);
-  
+
   const content = getText(
     getLang(),
     'notifications.summary',
@@ -155,6 +155,30 @@ export const saveTasks = (tasks) => {
 export const formatDate = (date) => {
   return new Date(date).toLocaleString(getLang());
 };
+
+/**
+ * Converte uma string de data no formato 'dd/MM/yyyy HH:mm:ss' para um objeto Date.
+ * @param {string} stringDate - A string de data no formato 'dd/MM/yyyy HH:mm:ss'.
+ * @returns {Date | null} - Um objeto Date representando a data fornecida ou null se a conversão falhar.
+ */
+export const convertToDate = (stringDate) => {
+  if (!stringDate) return null;
+
+  // Usando match para pegar os números
+  const match = stringDate.replace(/,/g, '').match(/\d+/g);
+  
+  // Se match for null, significa que não encontrou números para desestruturar
+  if (!match) return null;
+
+  // Desestruturando os valores
+  const [day, month, year, hours, minutes, seconds] = match;
+
+  // Criando o objeto Date com os valores desestruturados
+  const date = new Date(+year, +month - 1, +day, +hours, +minutes, +seconds);
+
+  return date;
+};
+
 
 /**
  * Calcula a diferença de tempo entre duas datas.

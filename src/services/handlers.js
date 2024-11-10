@@ -1,11 +1,17 @@
 //src/services/handlers.js
 /**
  * @import { Task } from '../utils/types.js'
+ * @import { ElementConfig } from '../utils/types.js'
  */
 
 import { storageUtil } from '../utils/storageUtil.js';
-import { getLang, saveTasks, updateOccupiedSize } from '../utils/helpers.js';
-import { renderTasks } from './../layout/tasks';
+import {
+  formatDate,
+  getLang,
+  saveTasks,
+  updateOccupiedSize,
+} from '../utils/helpers.js';
+import { getFilteredTasks, renderTasks } from './../layout/tasks';
 import { showSnackbar } from '../utils/showSnackbar.js';
 import { tasks } from './storageHandle.js';
 import { getText } from './dialogHandler.js';
@@ -45,57 +51,6 @@ export const togglePriority = (e) => {
     const priority = select?.textContent;
     showSnackbar(getText(getLang(), 'notifications.priorityUpdated', priority));
   }
-};
-
-/**
- * Adiciona uma ou mais tarefas à lista de tarefas.
- *
- * @param {Event} e - O evento que disparou a função.
- * @returns {void}
- */
-export const addTasks = (e) => {
-  // console.log('e :', e);
-  e.preventDefault();
-  /** @type {HTMLSelectElement | null} */
-  const input = document.querySelector('#taskInput');
-  /** @type {HTMLSelectElement | null} */
-  const prioritySelect = document.querySelector('select#prioritySelect');
-  const priority = prioritySelect ? prioritySelect.value : 'low';
-  const taskLines =
-    input?.value
-      .trim()
-      .split('\n')
-      .filter((line) => Boolean(line)) || [];
-
-  if (taskLines.length === 0) {
-    showSnackbar(getText(getLang(), 'notifications.taskEmpty'));
-    return;
-  }
-
-  taskLines.forEach((title) => {
-    if (title.trim()) {
-      const now = new Date();
-      const task = {
-        id: +(Date.now() + Math.random()),
-        title: title.trim(),
-        priority,
-        completed: false,
-        createdAt: now,
-        completedAt: now,
-      };
-      tasks.push(task);
-    }
-  });
-
-  saveTasks(tasks);
-
-  if (input) {
-    input.value = '';
-  }
-
-  renderTasks(tasks);
-  updateOccupiedSize(tasks);
-  showSnackbar(getText(getLang(), 'notifications.tasksAdded'));
 };
 
 /**
@@ -165,18 +120,20 @@ export const handleChangePriority = (e, tasks) => {
 
   const availablePriorities = Object.keys(getText(getLang(), 'priorities'));
   const currentPriorityIndex = availablePriorities.indexOf(task.priority);
-  
+
   // Calcula o próximo índice de prioridade de forma circular
-  const nextPriorityIndex = (currentPriorityIndex + 1) % availablePriorities.length;
+  const nextPriorityIndex =
+    (currentPriorityIndex + 1) % availablePriorities.length;
   task.priority = availablePriorities[nextPriorityIndex];
 
   const updatedPriority = getText(getLang(), 'priorities')[task.priority];
 
   saveTasks(tasks);
   renderTasks(tasks);
-  showSnackbar(getText(getLang(), 'notifications.priorityUpdated', updatedPriority));
+  showSnackbar(
+    getText(getLang(), 'notifications.priorityUpdated', updatedPriority)
+  );
 };
-
 
 /**
  * Exclui todas as tarefas da lista de tarefas.
@@ -222,13 +179,40 @@ export const showMessageSelectedLang = (e) => {
 /**
  * Exibe um modal na aplicação.
  *
- * @param {any} content - O conteúdo a ser exibido no modal.
- * @param {string} classModal - A classe CSS para estilizar o modal.
- * @param {Function} confirmeHandler - A função a ser chamada quando o usuário confirmar o modal.
+ * @param {ElementConfig} content - O conteúdo a ser exibido no modal.
+ * @param {string} className - Uma string que representa o nome da classe CSS a ser aplicada ao modal.
+ * @param {Function} confirmeHandler - A função a ser executada quando o usuário confirmar a ação.
+ * @param {string} [textBtnConfirme='OK'] - O texto a ser exibido no botão de confirmação.
+ * @param {string} [titleBtnConfirme='Confirmar'] - O título a ser exibido no botão de confirmação.
+ * @param {Function} [cancelHandler=closeModal] - A função a ser executada quando o usuário cancelar a ação.
+ * @param {string} [textBtnCancel='Cancelar'] - O texto a ser exibido no botão de cancelamento.
+ * @param {string} [titleBtnCancel='Fechar'] - O título a ser exibido no botão de fechamento.
  * @returns {void}
  */
-export const showModal = (content, classModal, confirmeHandler) => {
-  const modal = renderElement(getModal(content, classModal, confirmeHandler), true);
+export const showModal = (
+  content,
+  className,
+  confirmeHandler,
+  textBtnConfirme,
+  titleBtnConfirme,
+  cancelHandler,
+  textBtnCancel,
+  titleBtnCancel
+) => {
+  const modal = renderElement(
+    getModal(
+      content,
+      className,
+      confirmeHandler,
+      textBtnConfirme,
+      titleBtnConfirme,
+      cancelHandler,
+      textBtnCancel,
+      titleBtnCancel
+    ),
+    true
+  );
+
   if (modal instanceof HTMLDialogElement) {
     modal.showModal();
   }
@@ -269,10 +253,14 @@ export const handleTasksView = (e) => {
 
   const isCompact = taskList.classList.contains('task-card-compact');
   taskList.classList.toggle('task-card-compact', !isCompact);
-  
-  button.title = getText(getLang(), 'actions.tasksView', !isCompact)
-  buttonTextWrapper.textContent = getText(getLang(), 'actions.tasksView', !isCompact);
-}
+
+  button.title = getText(getLang(), 'actions.tasksView', !isCompact);
+  buttonTextWrapper.textContent = getText(
+    getLang(),
+    'actions.tasksView',
+    !isCompact
+  );
+};
 
 /**
  * Variável que armazena o ID do timeout para o debounce.
@@ -305,4 +293,96 @@ export const inputSearchHandler = (e) => {
 
     renderTasks(filteredTasks);
   }, 300);
+};
+
+/**
+ * Manipulador de eventos para as opções de compartilhamento.
+ * Esse manipulador é responsável por gerenciar as interações do usuário com as
+ * opções de compartilhamento, como filtros de status, prioridade e checkboxes.
+ * Ele atualiza os filtros correspondentes na interface do usuário e renderiza
+ * as tarefas filtradas no container de compartilhamento.
+ */
+export const shareOptionsHandler = () => {
+  /** @type {HTMLSelectElement | null} */
+  const shareStatusFilter = document.querySelector('#shareStatusFilter');
+  /** @type {HTMLSelectElement | null} */
+  const sharePriorityFilter = document.querySelector('#sharePriorityFilter');
+  /** @type {HTMLInputElement | null} */
+  const shareCheckBoxPriority = document.querySelector(
+    '#shareCheckBoxPriority'
+  );
+  /** @type {HTMLInputElement | null} */
+  const shareCheckBoxCompleted = document.querySelector(
+    '#shareCheckBoxCompleted'
+  );
+  /** @type {HTMLInputElement | null} */
+  const shareCheckBoxCreatedAt = document.querySelector(
+    '#shareCheckBoxCreatedAt'
+  );
+  /** @type {HTMLElement | null} */
+  const sharedContainer = document.querySelector('#contentShare');
+  /** @type {HTMLSelectElement | null} */
+  const selectStatusFilter = document.querySelector('select#statusFilter');
+  /** @type {HTMLSelectElement | null} */
+  const selectPriorityFilter = document.querySelector('select#priorityFilter');
+
+  if (
+    !shareStatusFilter ||
+    !sharePriorityFilter ||
+    !selectStatusFilter ||
+    !selectPriorityFilter ||
+    !sharedContainer
+  )
+    return;
+
+  selectStatusFilter.value = shareStatusFilter.value;
+  selectPriorityFilter.value = sharePriorityFilter.value;
+
+  const formatTaskText = ({ title, completed, priority, createdAt }) => {
+    const statusText = shareCheckBoxCompleted?.checked
+      ? `[${completed ? '✅' : '❌'}] `
+      : '';
+    const priorityText = shareCheckBoxPriority?.checked
+      ? `[${priority === 'high' ? '🔴' : priority === 'low' ? '🔵' : '🟠'}] `
+      : '';
+    const createdAtText = shareCheckBoxCreatedAt?.checked
+      ? `\n[${formatDate(createdAt)}]`
+      : '';
+    return `${statusText}${priorityText}${title}${createdAtText}\n`;
+  };
+
+  sharedContainer.textContent = getFilteredTasks(tasks)
+    .map(formatTaskText)
+    .join('');
+};
+
+/**
+ * Manipulador de eventos para compartilhar tarefas.
+ * Esse manipulador é responsável por copiar o conteúdo do elemento '#contentShare' para a área de transferência do navegador.
+ * Ele também verifica se o navegador suporta a API de área de transferência e exibe uma mensagem de notificação apropriada.
+ *
+ * @param {Event} e - O evento que acionou o manipulador.
+ * @returns {Promise<void>} - Uma Promise que resolve quando a operação de compartilhamento é concluída.
+ */
+export const shareTasksHandler = async (e) => {
+  /** @type {HTMLElement | null} */
+  const sharedContainer = document.querySelector('#contentShare');
+  if (!sharedContainer) return;
+
+  const text = sharedContainer.textContent?.trim();
+  if (!text) return;
+
+  if (!navigator.clipboard) {
+    showSnackbar(getText(getLang(), 'notifications.shareTasks.unsupported'));
+    return;
+  }
+
+  try {
+    await navigator.clipboard.writeText(text);
+    showSnackbar(getText(getLang(), 'notifications.shareTasks.success'));
+  } catch (error) {
+    showSnackbar(getText(getLang(), 'notifications.shareTasks.error'));
+  } finally {
+    closeModal(e);
+  }
 };

@@ -1,21 +1,32 @@
 /**
  * @import { Task } from '../utils/types.js'
  */
+import { APP_PREFIX } from '../utils/constants.js';
 import { storageUtil } from '../utils/storageUtil';
 
 /**
  * Define o prefixo da aplicação para o armazenamento local.
  * Isso ajuda a organizar os dados da aplicação no armazenamento local.
  */
-storageUtil.setAppPrefix('todoApp');
+storageUtil.setAppPrefix(APP_PREFIX);
 
 /**
  * Recupera a lista de tarefas armazenada no armazenamento local.
  * A lista de tarefas é recuperada do armazenamento local com a chave 'tasks'.
  * Caso não exista nenhuma lista de tarefas armazenada, uma lista vazia é retornada.
+ * Método estático.
  * @type {Array<Task>} - A lista de tarefas armazenada no armazenamento local.
  */
 export const tasks = storageUtil.getItem('tasks') || [];
+
+/**
+ * Recupera a lista de tarefas armazenada no armazenamento local.
+ * A lista de tarefas é recuperada do armazenamento local com a chave 'tasks'.
+ * Caso não exista nenhuma lista de tarefas armazenada, uma lista vazia é retornada.
+ * Método dinâmico.
+ * @returns {Array<Task>} - A lista de tarefas armazenada no armazenamento local.
+ */
+export const getTasks = () => storageUtil.getItem('tasks') || [];
 
 /**
  * Recupera o tema atual da aplicação armazenado no armazenamento local.

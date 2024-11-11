@@ -9,7 +9,7 @@ import { renderTasks } from "../layout/tasks";
 import { convertToDate, getLang, saveTasks, updateOccupiedSize } from "../utils/helpers";
 import { showSnackbar } from "../utils/showSnackbar";
 import { getText } from "./dialogHandler";
-import { tasks } from "./storageHandle";
+import { getTasks } from "./storageHandle";
 
 /**
  * Gerenciador de tarefas com suporte a prioridades e status
@@ -34,6 +34,8 @@ const TASK_STATUS = {
    * @returns {void}
    */
   export const addTasks = () => {
+    const tasks = getTasks()
+
     /**@type {HTMLInputElement | null} */
     const input = document.querySelector('#taskInput');
     /**@type {HTMLSelectElement | null} */
@@ -56,7 +58,7 @@ const TASK_STATUS = {
     tasks.push(...newTasks);
     
     // Limpar e atualizar UI
-    updateUI(input);
+    updateUI(input, tasks);
   };
   
   /**
@@ -159,7 +161,7 @@ const groupTasksAndDates = (lines) => {
    * Atualiza a interface do usuário
    * @param {HTMLInputElement | null} input - Elemento de input
    */
-  const updateUI = (input) => {
+  const updateUI = (input, tasks) => {
     if (input) input.value = '';
     saveTasks(tasks);
     renderTasks(tasks);

@@ -13,7 +13,7 @@ import {
 } from '../utils/helpers.js';
 import { getFilteredTasks, renderTasks } from './../layout/tasks';
 import { showSnackbar } from '../utils/showSnackbar.js';
-import { tasks } from './storageHandle.js';
+import { tasks, getTasks } from './storageHandle.js';
 import { getText } from './dialogHandler.js';
 import { renderElement } from '../utils/renderElement.js';
 import { closeModal, getModal } from '../components/modal.js';
@@ -326,15 +326,18 @@ export const shareOptionsHandler = () => {
   /** @type {HTMLSelectElement | null} */
   const selectPriorityFilter = document.querySelector('select#priorityFilter');
 
+  const currentTasks = getTasks();
+
   if (
     !shareStatusFilter ||
     !sharePriorityFilter ||
     !selectStatusFilter ||
     !selectPriorityFilter ||
     !sharedContainer
-  )
+  ) {
+    showSnackbar(getText(getLang(), 'notifications.shareTasks.error'));
     return;
-
+  }
   selectStatusFilter.value = shareStatusFilter.value;
   selectPriorityFilter.value = sharePriorityFilter.value;
 
@@ -351,7 +354,7 @@ export const shareOptionsHandler = () => {
     return `${statusText}${priorityText}${title}${createdAtText}\n`;
   };
 
-  sharedContainer.textContent = getFilteredTasks(tasks)
+  sharedContainer.textContent = getFilteredTasks(currentTasks)
     .map(formatTaskText)
     .join('');
 };

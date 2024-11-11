@@ -81,3 +81,5 @@ export const getModal = (
 
   return modal;
 };
+
+//TODO : adicionar animaçao de entrada e saida do modal

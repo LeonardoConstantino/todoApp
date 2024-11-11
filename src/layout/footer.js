@@ -5,7 +5,7 @@ import {
   shareOptionsHandler,
   shareTasksHandler,
 } from '../services/handlers';
-import { tasks } from '../services/storageHandle';
+import { getTasks } from '../services/storageHandle';
 import { getComponent, getLang, getTextComponent } from '../utils/helpers';
 import { showModal } from './../services/handlers';
 import { getInputCheckBox } from './../components/inputCheckBox';
@@ -108,7 +108,7 @@ const showModalDeleteTasksButton = createButton(
   },
   '',
   'button-secondary',
-  getText(getLang(), 'actions.deleteAllTasksConfirm', tasks.length)
+  getText(getLang(), 'actions.deleteAllTasksConfirm', getTasks().length)
 );
 
 export const footer = getComponent(

@@ -9,7 +9,7 @@ import { renderTasks } from './layout/tasks.js';// Renderiza tarefas
 import { showSnackbar } from './utils/showSnackbar.js';// Exibe notificações
 import { getText } from './services/dialogHandler.js';// Obtém texto de um diálogo
 import { getLang } from './utils/helpers.js';// Obtém a linguagem atual
-import { currentTheme, tasks } from './services/storageHandle.js';// Obtém tarefas do armazenamento local
+import { currentTheme, getTasks } from './services/storageHandle.js';// Obtém tarefas do armazenamento local
 
 /**
  * @function main
@@ -19,6 +19,8 @@ const main = () => {
   try {
     // Seleciona o elemento principal da aplicação no DOM
     const app = document.getElementById('app');
+    // Obtém as tarefas armazenadas no armazenamento local
+    const tasks = getTasks();
         
     // Obtém o tema atual da aplicação do armazenamento local
     document.documentElement.setAttribute('data-theme', currentTheme);

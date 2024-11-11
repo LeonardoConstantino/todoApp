@@ -14,15 +14,6 @@ storageUtil.setAppPrefix(APP_PREFIX);
  * Recupera a lista de tarefas armazenada no armazenamento local.
  * A lista de tarefas é recuperada do armazenamento local com a chave 'tasks'.
  * Caso não exista nenhuma lista de tarefas armazenada, uma lista vazia é retornada.
- * Método estático.
- * @type {Array<Task>} - A lista de tarefas armazenada no armazenamento local.
- */
-export const tasks = storageUtil.getItem('tasks') || [];
-
-/**
- * Recupera a lista de tarefas armazenada no armazenamento local.
- * A lista de tarefas é recuperada do armazenamento local com a chave 'tasks'.
- * Caso não exista nenhuma lista de tarefas armazenada, uma lista vazia é retornada.
  * Método dinâmico.
  * @returns {Array<Task>} - A lista de tarefas armazenada no armazenamento local.
  */

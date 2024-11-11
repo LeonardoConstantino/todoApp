@@ -13,7 +13,7 @@ import {
 } from '../utils/helpers.js';
 import { getFilteredTasks, renderTasks } from './../layout/tasks';
 import { showSnackbar } from '../utils/showSnackbar.js';
-import { tasks, getTasks } from './storageHandle.js';
+import { getTasks } from './storageHandle.js';
 import { getText } from './dialogHandler.js';
 import { renderElement } from '../utils/renderElement.js';
 import { closeModal, getModal } from '../components/modal.js';
@@ -59,7 +59,8 @@ export const togglePriority = (e) => {
  * @returns {void}
  */
 export const applyFilters = () => {
-  renderTasks(tasks);
+  const currentTasks = getTasks();
+  renderTasks(currentTasks);
   showSnackbar(getText(getLang(), 'notifications.filtersApplied'));
 };
 
@@ -141,10 +142,11 @@ export const handleChangePriority = (e, tasks) => {
  * @returns {void}
  */
 export const deleteAllTasks = () => {
-  tasks.length = 0;
-  saveTasks(tasks);
-  renderTasks(tasks);
-  updateOccupiedSize(tasks);
+  const currentTasks = getTasks();
+  currentTasks.length = 0;
+  saveTasks(currentTasks);
+  renderTasks(currentTasks);
+  updateOccupiedSize(currentTasks);
   showSnackbar(getText(getLang(), 'notifications.allTasksDeleted'));
 };
 
@@ -285,8 +287,10 @@ export const inputSearchHandler = (e) => {
 
   clearTimeout(debounceTimeout);
 
+  const currentTasks = getTasks();
+
   debounceTimeout = setTimeout(() => {
-    const filteredTasks = tasks.filter((task) => {
+    const filteredTasks = currentTasks.filter((task) => {
       const taskText = task.title.toLowerCase();
       return taskText.includes(inputValue);
     });

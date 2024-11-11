@@ -16,11 +16,13 @@ import {
 } from '../services/handlers.js';
 import { header } from '../layout/header.js';
 import { footer } from '../layout/footer.js';
-import { tasks } from '../services/storageHandle.js';
+import { getTasks } from '../services/storageHandle.js';
 import { getText } from '../services/dialogHandler.js';
 import { getInputSearch } from '../components/inputSearch.js';
 import { getSelection } from '../components/selection.js';
 import { addTasks } from '../services/addTasksHandler.js';
+
+const tasks = getTasks();
 
 const lastCompletedTask = getLastCompletedTask(tasks);
 
